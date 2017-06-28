@@ -205,7 +205,7 @@ You might wonder what the whole point of using so much polymorphism is. The answ
 
 *There's a fundamental difference between your own code and libraries of other people: You can change or extend your own code, but if you want to use some other libraries you have to take them as they are ... Scala has implicit parameters and conversions. They can make existing libraries much more pleasant to deal with.*  
 
-So, by using all the polymorphism techniques, we can implement the "pimp my library" pattern.<sup>[[8]](http://groovy-lang.org/design-patterns.html#_pimp_my_library_pattern)</sup>.
+So, by using all the polymorphism techniques, we can implement the "pimp my library" pattern.<sup>[[8]](http://groovy-lang.org/design-patterns.html#_pimp_my_library_pattern)</sup>
 
 *The Pimp my Library Pattern suggests an approach for extending a library that nearly does everything that you need but just needs a little more. It assumes that you do not have source code for the library of interest.*
 
