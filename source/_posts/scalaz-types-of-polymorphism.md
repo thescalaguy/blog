@@ -165,7 +165,7 @@ scala> trait Monoid[A] {
 defined trait Monoid
 
 scala> trait FoldLeft[F[_]] {
-     |   def foldLeft[A, B](xs: F   [A], b: B, f: (B, A) => B): B
+     |   def foldLeft[A, B](xs: F[A], b: B, f: (B, A) => B): B
      | }
 defined trait FoldLeft
 
