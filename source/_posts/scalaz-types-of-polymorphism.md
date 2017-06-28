@@ -149,7 +149,7 @@ In the post where we generalized `sum` function, we generalized it to work with 
 def sum[A](xs: List[A])(implicit m: Monoid[A]): A = ???
 
 // we want this
-def sum[M[_], A](xs: M[A])(implicit m: Monoid[A], implicit f: FoldLeft[M]): A = ???
+def sum[M[_], A](xs: M[A])(implicit m: Monoid[A], f: FoldLeft[M]): A = ???
 {% endcodeblock %}
 
 The difference between the two is that the first version, although polymorphic over types for which we have monoids defined, is still heavily tied to `List`. The second version instead will work with type that is `FoldLeft`. We'll expand upon the `sum` example<sup>[[6]](http://bit.ly/c2eTVR)</sup>. We'll need the monoids and we'll need to add a `FoldLeft` to make `sum` more generic.  
