@@ -34,7 +34,7 @@ Subtype polymorphism involves inheritance. More formally<sup>[[3]](http://scala.
 
 *Subtype polymorphism is a form of type polymorphism in which a subtype is a data-type that is related to another data-type (the super-type) by some notion of substitutability.* 
 
-As an example<sup>[[4]](http://eed3si9n.com/learning-scalaz/polymorphism.html#Subtype+polymorphism)</sup>, consider a trait `Plus` which lets it's its subtype add itself with another of the same type.
+As an example<sup>[[4]](http://eed3si9n.com/learning-scalaz/polymorphism.html#Subtype+polymorphism)</sup>, consider a trait `Plus` which lets its subtype add itself with another of the same type.
 
 {% codeblock lang:scala %}
 scala> trait Plus[A] {
