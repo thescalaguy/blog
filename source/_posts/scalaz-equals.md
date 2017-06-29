@@ -114,4 +114,8 @@ defined object PersonEquals
 res7: Boolean = false
 @ Person(1, "John") =/= Person(2, "Jane")
 res8: Boolean = true
-{% endcodeblock %}
+{% endcodeblock %}  
+
+## Conclusion  
+
+Scalaz `===` lets you check for equality in a type-safe way. More often than not, this is what you need. Trying to compare values of dissimilar types is usually not needed. Using `===` ensures that such comparisons lead to errors at compile-time instead of waiting for them to surface at run-time. This makes debugging much more efficient.
