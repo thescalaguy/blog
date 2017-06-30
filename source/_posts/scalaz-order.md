@@ -141,4 +141,15 @@ You can now also use `sorted` on a collection equally easily. Using `Order[A].to
 salaryOrdering: math.Ordering[Salary] = scalaz.Order$$anon$1@5b8a5d7c
 @ List(Salary(2.0f), Salary(1.0f), Salary(0.0f)).sorted
 res10: List[Salary] = List(Salary(0.0F), Salary(1.0F), Salary(2.0F))
-{% endcodeblock %}
+{% endcodeblock %}  
+
+Also, since `Order` trait extends the `Equal` trait, you get the `===` operator, too.  
+
+{% codeblock lang:scala %}
+@ Salary(0.0F) === Salary(1.0F)
+res11: Boolean = false
+{% endcodeblock %}  
+
+## Conclusion  
+
+By using Scalaz `Order` trait, we can implement comparison between values in a type-safe and extensible way. There's seamless transformation from Scalaz `Order` to `scala.math.Ordering` which lets us use the `sorted` method on collections.
