@@ -1,5 +1,5 @@
 ---
-title: Scalaz Equals
+title: Scalaz Equal
 tags:
   - scalaz
   - scala
