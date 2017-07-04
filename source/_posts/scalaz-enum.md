@@ -118,6 +118,15 @@ res8: Char = 'E'
 res9: Char = '?'
 {% endcodeblock %}  
 
+You can also get min and max values for an enumeration.  
+
+{% codeblock lang:scala %}
+@ implicitly[Enum[Int]].min
+res10: Option[Int] = Some(-2147483648)
+@ implicitly[Enum[Int]].max
+res11: Option[Int] = Some(2147483647)
+{% endcodeblock %}
+
 Let's create our own enumeration using Scalaz `Enum`.
 
 {% codeblock lang:scala %}
@@ -167,10 +176,15 @@ import Size._
 res4: Size = Size(1, "MEDIUM")
 // as a list
 @ SMALL |-> LARGE
-res7: List[Size] = List(Size(0, "SMALL"), Size(1, "MEDIUM"), Size(2, "LARGE"))
+res5: List[Size] = List(Size(0, "SMALL"), Size(1, "MEDIUM"), Size(2, "LARGE"))
 // show
 @ SMALL.println
 SMALL
+// max
+@ implicitly[Enum[Size]].max
+res6: Option[Size] = Some(Size(2, "LARGE"))
+@ implicitly[Enum[Size]].min
+res7: Option[Size] = Some(Size(0, "SMALL"))
 {% endcodeblock %}
 
 ## Conclusion  
