@@ -49,7 +49,7 @@ res8: Int = 0
 
 The unary `~` extracts the value from the `Option` or returns the zero value for that type. For example, in case of `Int` it'll return the value in the `Option` or return 0. The `some{ .. } none { .. }` construct lets you specify what value to return in case of `Some` and `None`. I am multiplying the value by 2 and thus returning 26. As you can see, Scalaz provides with more expressive and type-safe way to create and extract values from `Option`.   
 
-Notice that the type of all the resulting variables is `Option` instead of `Some` or `None`. This more type-safe than using `None` because you'd get `None.type`, and the type inferencer would allow the type to be `Option[Int]` or `Option[String]` whereas `none[Int]` is guaranteed to be an `Option[Int]`. The type inferencer will enforce this. 
+Notice that the type of all the resulting variables is `Option` instead of `Some` or `None`. This is more type-safe than using `None` because you'd get `None.type`, and the type inferencer would allow the type to be `Option[Int]` or `Option[String]` whereas `none[Int]` is guaranteed to be an `Option[Int]`. The type inferencer will enforce this. 
 
 ### Miscellaneous  
 
