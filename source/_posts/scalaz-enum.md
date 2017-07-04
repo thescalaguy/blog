@@ -183,9 +183,12 @@ SMALL
 // max
 @ implicitly[Enum[Size]].max
 res6: Option[Size] = Some(Size(2, "LARGE"))
+// min
 @ implicitly[Enum[Size]].min
 res7: Option[Size] = Some(Size(0, "SMALL"))
-{% endcodeblock %}
+{% endcodeblock %}  
+
+Notice that since we're using `implicitly[]`, we don't have to provide the exact name of the typeclass extending `Enum[Size]`, the compiler will figure it out from the implicits within scope.
 
 ## Conclusion  
 
