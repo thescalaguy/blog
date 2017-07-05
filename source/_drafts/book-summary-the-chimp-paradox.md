@@ -21,4 +21,6 @@ The book begins by explaining the three parts of the human brain that we'll be f
 
 Controlling the Chimp is important because failing to do so would lead us to doing and saying things that we later regret. It is also important to control the Chimp because the body redirects blood supply to the dominant one - if we act irrationally the blood is sent to the limbic lobe (Chimp) and if we act rationally it is sent to the frontal lobe (Human). Also, by default, Chimp always overpowers the Human so it becomes imperative that we learn to control it. But remember that Chimp is neither good nor bad, it just is.  
 
-Towards the end of the chapter is a suggested exercise where you're asked to spend no more than 10 minutes a day looking back at the past 24 hours and trying to find out when the Chimp tried to hijack your thoughts and actions, and logging it in a journal. This becomes the first step where the Human is reprogramming the Computer by marking Chimp's actions as "not right", so to say. 
+Towards the end of the chapter is a suggested exercise where you're asked to spend no more than 10 minutes a day looking back at the past 24 hours and trying to find out when the Chimp tried to hijack your thoughts and actions, and logging it in a journal. This becomes the first step where the Human is reprogramming the Computer by marking Chimp's actions as "not right", so to say.   
+
+## Chapter 2 - The Divided Planet (Part 1)

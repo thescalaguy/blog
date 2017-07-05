@@ -134,7 +134,7 @@ Let's create our own enumeration using Scalaz `Enum`.
 import scalaz._
 @ import Scalaz._
 import Scalaz._
-@ object Size extends {
+@ object Size {
     case class Size(val size: Int, val name: String)
     val SMALL = Size(0, "SMALL")
     val MEDIUM = Size(1, "MEDIUM")
