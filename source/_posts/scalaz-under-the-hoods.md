@@ -61,11 +61,11 @@ scala> sum(List(1, 2, 3), IntMonoid)
 res3: Int = 6
 {% endcodeblock %}  
 
-What we've done is created a general-purpose `sum` function whose working depends upon which monoid is passed to it. Now we can very easily sum a `List[String]` or a `List[Double]` by adding a corresponding monoid.  
+What we've done is create a general-purpose `sum` function whose working depends upon which monoid is passed to it. Now we can very easily sum a `List[String]` or a `List[Double]` by adding a corresponding monoid.  
 
 ## Step 3 - Make the Monoid Implicit  
 
-Next, we'll make the monoid an implicit parameter to our `sum` function. We'll also package our `IntMonoid` into a `Monoid` companion object and make it implicit. The reason for doing this is how Scala compiler resolves implicit values; it'll look for implicit values in its scope. So, we bring `IntMonoid` within scope by by importing from the `Monoid` companion object.
+Next, we'll make the monoid an implicit parameter to our `sum` function. We'll also package our `IntMonoid` into a `Monoid` companion object and make it implicit. The reason for doing this is how Scala compiler resolves implicit values; it'll look for implicit values in its scope. So, we bring `IntMonoid` within scope by importing from the `Monoid` companion object.
 
 {% codeblock lang:scala %}
 scala> trait Monoid[A] {
