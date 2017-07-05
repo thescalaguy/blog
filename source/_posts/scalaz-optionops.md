@@ -83,7 +83,7 @@ res12: String = ""
 res13: String = "some"
 {% endcodeblock %}  
 
-Scalaz provides with a disjunction which is a replacement for Scala `Either`. I've only introduced disjunction here and will cover it later in a post of its own. Trying to convert a `None` to a right disjunction doesn't work. We get back a left disjunction as indicated by `-\/`. Similarly, converting a `Some` to right disjunction works, as indicated by `\/-`. Scalaz also provides a ternary operator to work with `Option`s. 
+Scalaz provides us with a disjunction which is a replacement for Scala `Either`. I've only introduced disjunction here and will cover it later in a post of its own. Trying to convert a `None` to a right disjunction doesn't work. We get back a left disjunction as indicated by `-\/`. Similarly, converting a `Some` to right disjunction works, as indicated by `\/-`. Scalaz also provides a ternary operator to work with `Option`s. 
 
 ## Conclusion  
 
