@@ -22,7 +22,7 @@ import Scalaz._
 res2: Int = 3
 {% endcodeblock %}  
 
-`fold` in `Tuple2Ops` takes a function which accepts 2 arguments i.e. equal to the arity of the tuple. Here, we're folding the tuple and adding together it's two `Int` elements but you can do whatever you want.  
+`fold` in `Tuple2Ops` takes a function which accepts 2 arguments i.e. equal to the arity of the tuple. Here, we're folding the tuple and adding together its two `Int` elements but you can do whatever you want.  
 
 ## Converting to IndexedSeq  
 
