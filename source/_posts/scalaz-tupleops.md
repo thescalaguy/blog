@@ -11,7 +11,7 @@ In this post we'll look at `TupleOps` and the goodies it provides to work with `
 
 With that said, let's jump into examples. We'll look at what `Tuple2Ops` provides us. Everything is analogous to `Tuple3Ops`, etc. It's just the number of arguments to the methods that will change. 
 
-## Folding a Tuple  
+### Folding a Tuple  
 
 {% codeblock lang:scala %}
 @ import scalaz._
@@ -24,7 +24,7 @@ res2: Int = 3
 
 `fold` in `Tuple2Ops` takes a function which accepts 2 arguments i.e. equal to the arity of the tuple. Here, we're folding the tuple and adding together its two `Int` elements but you can do whatever you want.  
 
-## Converting to IndexedSeq  
+### Converting to IndexedSeq  
 
 {% codeblock lang:scala %}
 @ (1, 2) toIndexedSeq
@@ -33,7 +33,7 @@ res3: collection.immutable.IndexedSeq[Int] = Vector(1, 2)
 
 This one is self-explanatory. The tuple is converted to an [`IndexedSeq`](http://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html).  
 
-## Mapping Elements in a Tuple  
+### Mapping Elements in a Tuple  
 
 {% codeblock lang:scala %}
 @ (1, 2) mapElements(_1 => _1 * 2, _2 => _2 * 2)
