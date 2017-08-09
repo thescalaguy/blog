@@ -52,7 +52,7 @@ Let's begin by creating our first object of category $S$ - a set $A$.
 A: Set[String] = Set("apples", "oranges")
 {% endcodeblock %} 
 
-Next, let's define a function $f$ with morphs $A$ to $B$.
+Next, let's define a function $f$ which morphs $A$ to $B$.
 
 {% codeblock lang:scala %}
 @ def f(a: Set[String]): Set[String] = a map { _.reverse }
