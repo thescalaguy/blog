@@ -101,3 +101,9 @@ res9: Boolean = true
 {% endcodeblock %}
 
 And we see that the second rule is also satisfied. Therefore, $f$ is a homomorphism such that $f: StringMonoid \rightarrow IntMonoid$. To recap, a monoid homomorphism is a map between monoids that preserves the monoid operation and maps the identity element of the first monoid to that of the second monoid<sup>[[1]](https://en.wikipedia.org/wiki/Homomorphism#Definition)</sup>. The monoid operation is still $+$ and the empty string is mapped to $0$, which is the zero/identity element of `IntMonoid`. 
+
+## Category with One Object
+
+Suppose there's a category $A$ with just one object in it. The identity arrow $id_A$ would point to itself. And the composition of this arrow with itself is $id_A$, which satisfies the associativity law. A monoid $(M, \bullet, e)$ may be represented as a category with a single object. The elements of M are represented as arrows from this object to itself, the identity element $e$ is represented as the identity arrow, and the operation $\bullet$ is represented as composition of arrows.
+
+Any category with a single object is a monoid.
