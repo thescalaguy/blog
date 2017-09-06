@@ -1,6 +1,7 @@
 ---
 title: Functor
 date: 2017-09-05 08:46:09
+tags:
   - category theory
   - scala
   - functional programming
