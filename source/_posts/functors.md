@@ -64,3 +64,53 @@ res4: List[Int] = List(2, 4, 6)
 {% endcodeblock %}
 
 As we can see, `maplist` applied the function `f` on all elements of `L`. We did this by using the `map` method of a `List` instance. 
+
+## Functor Laws
+
+All functors are expected to obey the two laws that we saw in the formal definition. Let's see how they translate to code.
+
+### First Law
+
+$$F(id\_A) = id\_{F(A)}$$
+
+The first law states that if we map the identity function over a functor, we'll get back a functor which is the same as the original functor.
+
+{% codeblock lang:scala %}
+@ List(1, 2, 3) map identity
+res5: List[Int] = List(1, 2, 3)
+{% endcodeblock %}
+
+As we can see, applying `identity` to the list gives back the same list.
+
+### Second Law
+
+$$F(g \circ f) = F(g) \circ F(f)$$
+
+The second law states that if we map a functor using a composition of two functions, $F(g \circ f)$, it's the same as first mapping the functor using the first function and then mapping the resulting functor using the second function, $F(g) \circ F(f)$.
+
+We'll begin by creating two functions `f` and `g`.
+
+{% codeblock lang:scala %}
+@ def f(x: Int): Int = x + 1
+defined function f
+@ def g(x: Int): Int = x + 1
+defined function g
+{% endcodeblock %}
+
+Now let's put the theory into practice.
+
+{% codeblock lang:scala %}
+// composition of two functions
+@ List(1, 2, 3) map { x => g(f(x)) }
+res8: List[Int] = List(3, 4, 5)
+
+// applying map twice
+@ List(1, 2, 3) map f map g
+res9: List[Int] = List(3, 4, 5)
+{% endcodeblock %}
+
+As we see, the two lists are the same.
+
+## Conclusion
+
+In this post we saw functors which map objects from one category to another. Containers like trees, lists, etc. are functors. All functors are required to obey the two functor laws.
