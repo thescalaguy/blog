@@ -28,7 +28,7 @@ Formally, a category $C$ consists of the following:
 The formal definition above is taken verbatim from [Basic Category Theory for Computer Scientists](https://mitpress.mit.edu/books/basic-category-theory-computer-scientists).
 
 <center>
-![Simple Category](https://upload.wikimedia.org/wikibooks/en/d/d3/Simple-cat.png)
+![Simple Category](https://upload.wikimedia.org/wikipedia/commons/d/d3/Simple-cat.png)
 </center>  
 
 Let's relate the diagram above<sup>[[2]](https://en.wikibooks.org/wiki/Haskell/Category_theory)</sup> to the formal definition that we have. This simple category $C$ has three **objects** $A$, $B$, and $C$. There's three **identity arrows** $id_A$, $id_B$, and $id_C$. These identity arrows satisfy the **identity law**. For example, $id_A \circ g = g$. Intuitively, if you were "standing" on $A$ and you first "walked along" the $id_A$ arrow and then "walked along" the $g$ arrow to reach $B$, it's as good as just "walking along" $g$. 
