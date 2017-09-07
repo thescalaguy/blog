@@ -111,6 +111,23 @@ res9: List[Int] = List(3, 4, 5)
 
 As we see, the two lists are the same.
 
+## More Functor Examples
+
+### Example 1
+
+Let's consider a category where objects are integers. Arrows between objects indicates a "divided by" relationship. For example,
+
+$$
+10 \rightarrow 5
+$$
+
+This indicates that 10 can be divided by 5. To reiterate, objects are numbers and arrows represent a "divided by" relationship. 
+
+Now let's create a functor from the category to itself. This functor will multiply each object by 13. So, $F(10) = 130$. Is this a valid functor? We have $a \rightarrow b$ but is it true that $F(a) \rightarrow F(b)$?
+
+The answer is yes. Our category has arrows that indicate a "divided by" relationship. So, $\frac{a}{b}$ will be an integer. Similarly, $\frac{13a}{13b}$ will also be an integer and maintain a "divided by" relationship. This shows that arrows do not always have to be functions. They can also indicate a relationship between their domain and codomain.
+
+
 ## Conclusion
 
 In this post we saw functors which map objects from one category to another. Containers like trees, lists, etc. are functors. All functors are required to obey the two functor laws.
