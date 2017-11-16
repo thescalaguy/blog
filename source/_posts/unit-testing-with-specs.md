@@ -1,9 +1,11 @@
 ---
 title: Unit Testing with Specs
 tags:
-	- clojure
-	- testing
+  - clojure
+  - testing
+date: 2017-11-16 20:43:38
 ---
+
 
 [clojure.spec](https://clojure.org/about/spec) is a standard, expressive, powerful, and integrated system for specification and testing. It lets you define the shape of your data, and place contraints on it. Once the shape, and constraints are defined, clojure.spec can then generate sample data which you can use to test your functions. In this post I'll walk you through how you can use clojure.spec in conjunction with other libraries to write unit tests.
 
