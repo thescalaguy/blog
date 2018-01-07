@@ -131,24 +131,21 @@ It's possible for transducers to maintain reduction state.
 {% codeblock %}
 (defn multiply-xf
   []
-  (fn [xf]
+  (fn [rf]
     (let [product (volatile! 1)]
       (fn
-        ([] (xf))
-        ([result]
-         (xf result @product)
-         (xf result))
+        ([] (rf))
+        ([result] (rf result))
         ([result input]
-         (let [new-product (* input @product)]
-           (vreset! product new-product)
-           result))))))
+         (let [new-product (vswap! product * input)]
+           (rf result new-product)))))))
 {% endcodeblock %}  
 
-Here's a transducer which will multiply all the incoming numbers. We maintain state by using a `Volatile`. Whenever we get a new input we multiply it with the `product` we have so far and `vreset!` the value of the `Volatile`. Notice how we return the same result in the 2-arity function. In the 1-arity function, we first call the 2-arity of the `xf` and then the 1-arity version. This flushes the value and marks the end of the reduction process. Let's see this in action:
+Here's a transducer which will multiply all the incoming numbers. We maintain state by using a `Volatile`. Whenever we get a new input we multiply it with the `product` and update the state of `Volatile` using `vswap!`. Let's see this in action:
 
 {% codeblock %}
 (into [] (multiply-xf) [1 2 3])
-=> [6]
+=> [1 2 6]
 {% endcodeblock %}
 
 ## Early Termination  
@@ -158,31 +155,25 @@ The way the above transducer is written, it'll process all the inputs even if on
 {% codeblock %}
 (defn multiply-xf
   []
-  (fn [xf]
+  (fn [rf]
     (let [product (volatile! 1)]
       (fn
-        ([] (xf))
-        ([result]
-         (xf result @product)
-         (xf result))
+        ([] (rf))
+        ([result] (rf result))
         ([result input]
-         (let [new-product (* input @product)]
-           (vreset! product new-product)
+         (let [new-product (vswap! product * input)]
            (if (zero? new-product)
-             (do
-               (println "reduced")
-               (reduced (transient [])))
-             result)))))))
+             (reduced result)
+             (rf result new-product))))))))
 {% endcodeblock %}
 
-In the 2-arity function, we check if the `new-product` is zero. If it is, we know we have a reduced value. We end the reduction by making a transient, empty collection the `reduced` value. Let's see this in action:
+In the 2-arity function, we check if the `new-product` is zero. If it is, we know we have a reduced value. We end the reduction by returning the `result` we have so far.  Let's see this in action:
 
 {% codeblock %}
 (into [] (multiply-xf) [1 2 3])
-=> [6]
+=> [1 2 6]
 (into [] (multiply-xf) [1 2 0 3])
-reduced
-=> [0]
+=> [1 2]
 {% endcodeblock %}
 
 ## Conclusion  
