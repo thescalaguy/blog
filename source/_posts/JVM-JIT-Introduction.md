@@ -2,7 +2,9 @@
 title: JVM JIT - Introduction
 tags:
   - compilers
+date: 2018-04-17 20:31:00
 ---
+
 ## Motivation
 My day job requires me to write code in Clojure. This means the code is eventually compiled to bytecode and run on the JVM. Intrigued by how the JVM does what it does, I decided to dig a little deeper and look at how it optimizes the code on the fly. In this series of posts I will be looking at JVM JIT (Just-In-Time) compiler.
 
