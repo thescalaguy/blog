@@ -126,7 +126,7 @@ The compiled code is stored in JVM's code cache. As more methods become hot, the
 
 The size of code cache is platform dependent.  
 
-Also, JVM ensures that the access to cache is optimized. The `hlt` instructions in the assembly code exist for aligning the addresses. It is much for efficient for the CPU to read from even addresses than it is to read from odd addresses in memory. The `hlt` instructions ensure that the code is at an even address in memory.
+Also, JVM ensures that the access to cache is optimized. The `hlt` instructions in the assembly code exist for aligning the addresses. It is much more efficient for the CPU to read from even addresses than it is to read from odd addresses in memory. The `hlt` instructions ensure that the code is at an even address in memory.
 
 ### Which flags control code cache size?  
 
