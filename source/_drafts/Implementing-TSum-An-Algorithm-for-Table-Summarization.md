@@ -10,7 +10,7 @@ So, I am taking a break from my JVM JIT series to write this post about a table 
 ### What is TSum?  
 TSum is the [algorithm published by Google Research](https://ai.google/research/pubs/pub41683) <sup>[[link to the pdf]](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/41683.pdf)</sup>. To quote the abstract:
 
-> Given a table where rows correspond to records and columns correspond to attributes, we want to find a small number of patterns that succinctly summarize the dat$aset. ... TSum, a method that provides a sequence of patterns ordered by their "representativeness." It can decide both which these patterns are, as well as how many are necessary to properly summarize the data.  
+> Given a table where rows correspond to records and columns correspond to attributes, we want to find a small number of patterns that succinctly summarize the dataset. ... TSum, a method that provides a sequence of patterns ordered by their "representativeness." It can decide both which these patterns are, as well as how many are necessary to properly summarize the data.  
 
 An algorithm like this is useful in situations where the volume of data is so large that it'd be impossible for a human to deduce anything from it simply by looking at the data. For example, given patient records, a description like "most patients are middle-aged men with cholestrol, followed by child patients with chickenpox" provides a very human-readable summary of the data.  
 
@@ -290,5 +290,72 @@ function expand(T, pattern){
 }
 
 module.exports = expand;
+{% endcodeblock %}  
+
+The final piece of code we need to look at is to calculate the coverage i.e. how much of the data is described by a given pattern.  
+
+{% codeblock lang:javascript coverage.js%}
+"use strict";
+
+const _ = require("lodash");
+function coverage(pattern,T){
+    let matchingRows = _.filter(T,pattern);
+    let coverage = matchingRows.length / T.length;
+    return coverage * 100; // % of coverage
+}
+
+module.exports = coverage;
 {% endcodeblock %}
 
+Now that we have all the machinery in place, let's write a simple test. We'll take the patients example given in the paper and turn it into JSON objects. Then we'll write a simple script to run our code using this data and check whether the results make sense.  
+
+Here's the data:
+
+{% codeblock lang:json patients.json %}
+[
+  {"gender":"M","age":"adult","blood_pressure":"normal"},
+  {"gender":"M","age":"adult","blood_pressure":"low"},
+  {"gender":"M","age":"adult","blood_pressure":"normal"},
+  {"gender":"M","age":"adult","blood_pressure":"high"},
+  {"gender":"M","age":"adult","blood_pressure":"low"},
+
+  {"gender":"F","age":"child","blood_pressure":"low"},
+  {"gender":"M","age":"child","blood_pressure":"low"},
+  {"gender":"F","age":"child","blood_pressure":"low"},
+
+  {"gender":"M","age":"teen","blood_pressure":"high"},
+  {"gender":"F","age":"child","blood_pressure":"normal"}
+]
+{% endcodeblock %} 
+
+Here's the test:  
+
+{% codeblock lang:javascript test1.js %}
+"use strict";
+
+const tsum = require("../index");
+const table = require("./data/patients.json");
+const _ = require("lodash");
+
+let patterns = tsum.localExpansion( table );
+let sorted = tsum.patternMarshalling(patterns,table);
+
+patterns = _.shuffle(patterns);
+console.log( sorted );
+{% endcodeblock %} 
+
+Now let's run this:  
+
+{% codeblock lang:bash%}
+$ node test/test1.js
+[ { pattern: { age: 'adult', gender: 'M' },
+    saving: 375.3852901558848,
+    coverage: 50 },
+  { pattern: { age: 'child', blood_pressure: 'low' },
+    saving: 248.35614381022526,
+    coverage: 30 } ]
+{% endcodeblock %} 
+
+The output says that the most descriptive pattern is "adult male" which makes up 50% of the rows followed by "children with low blood pressure" which make up 30% of the rows. if we look at the sample data, out of the 10 rows, 5 are "adult male" and 3 are "children with low blood pressure". So the output of the algorithm checks out.  
+
+Finito. 
