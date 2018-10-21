@@ -3,7 +3,9 @@ title: 'Implementing TSum: An Algorithm for Table Summarization'
 tags:
   - algorithms
   - machine learning
+date: 2018-10-21 17:42:11
 ---
+
 
 So, I am taking a break from my JVM JIT series to write this post about a table summarization algorithm that I had implemented way back in my college days. Simply put, the algorithm finds the most descriptive patterns in the table that succinctly convey the meaning of the rows contained i.e. summarize it. This post will focus on what the algorithm is and how it's implemented in JavaScript. Take this post with a grain of salt because the implementation was a part of my college assignment and hasn't been thoroughly checked for correctness.  
 
