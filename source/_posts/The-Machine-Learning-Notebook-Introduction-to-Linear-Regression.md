@@ -41,9 +41,9 @@ That's the basic idea behind regression analysis.
 
 The regression line passes through the average expenditure for every given income level. In other words, it passes through the **conditional expected value** — $E(Y|X_i)$. This is read as "the expected value of expenditure (Y) given an income level ($X_i$)". Therefore, $E(Y|X_i)$ is a function of $X_i$ i.e. $E(Y|X_i) = f(X_i)$. The question now is: what is the function $f$?  
 
-We can start by assuming $f$ to be a straight line function which means that we're assuming expenditure to be linearly related to income. So, $E(Y|X_i) = \beta_1 + \beta_2X_i$. This is the **slope-intercept form** of a line where $\beta_1$ is the intercept and $\beta_2$ is the slope of the line. Both $\beta_1$ and $\beta_2$ are called the **regression coefficients**. The function $f$ is called the **population regression function**.  
+We can start by assuming $f$ to be a straight line function which means that we're assuming expenditure to be linearly related to income. So, $E(Y|X_i) = \beta_1 + \beta_2X_i$. This is the **slope-intercept form** of a line where $\beta_1$ is the intercept and $\beta_2$ is the slope of the line. Both $\beta_1$ and $\beta_2$ are called the **regression coefficients** (or **parameters**). The function $f$ is called the **population regression function**.  
 
-Now given that we know how to calculate the average expenditure for a given income level, how do we calculate the income of each individual at that income level? We can say that the individual's expenditure is "off the average income by a certain margin". This can be written as $Y_i = E(Y|X_i) + u_i$. The term $u_i$ denotes how far off an individual's expenditure is from the average and is called the **stochastic error term**.  
+Now given that we know how to calculate the average expenditure for a given income level, how do we calculate the expenditure of each individual at that income level? We can say that the individual's expenditure is "off the average expenditure by a certain margin". This can be written as $Y_i = E(Y|X_i) + u_i$. The term $u_i$ denotes how far off an individual's expenditure is from the average and is called the **stochastic error term**.  
 
 No matter how good our regression model is, there is always going to be some inherent variability. There are factors other than income which define a person's expenditure. Factors like gender, age, etc. affect the expenditure. All of these factors are subsumed into the stochastic error term.  
 
@@ -53,6 +53,11 @@ $$
 {Y_i} = \hat{Y_i} + \hat{u_i}
 $$  
 
-Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively. An estimator is simply a formula which tells us how to estimate the population parameter from the information provided by the sample data available to us.
+Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively. An estimator is simply a formula which tells us how to estimate the population parameter from the information provided by the sample data available to us.  
+
+## What it means to be 'Linear'  
+
+Linearity can be defined as being either linear in parameters or linear in explanatory variables. To be **linear in parameters** means that all your parameters in the regression function will be of power 1. By that definition, $E(Y|X_i) = \beta_1 + \beta_2X_i^2$ is linear. In contrast, $E(Y|X_i) = \beta_1 + \beta_2^2X_i$ is linear in explanatory variables. We'll be looking at models that are linear in parameters. Henceforth, "linear" would mean "linear in parameters".
+
 
 That's it. This is what sets the foundation for further studying linear regression.
