@@ -57,7 +57,7 @@ Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estima
 
 ## What it means to be 'Linear'  
 
-Linearity can be defined as being either linear in parameters or linear in explanatory variables. To be **linear in parameters** means that all your parameters in the regression function will be of power 1. By that definition, $E(Y|X_i) = \beta_1 + \beta_2X_i^2$ is linear. In contrast, $E(Y|X_i) = \beta_1 + \beta_2^2X_i$ is linear in explanatory variables. We'll be looking at models that are linear in parameters. Henceforth, "linear" would mean "linear in parameters".
+Linearity can be defined as being either linear in parameters or linear in explanatory variables. To be **linear in parameters** means that all your parameters in the regression function will have power 1. By that definition, $E(Y|X_i) = \beta_1 + \beta_2X_i^2$ is linear. In contrast, $E(Y|X_i) = \beta_1 + \beta_2^2X_i$ is **linear in explanatory variables** since $X_i$ has power 1. We'll be looking at models that are linear in parameters. Henceforth, "linear" would mean "linear in parameters".
 
 
 That's it. This is what sets the foundation for further studying linear regression.
