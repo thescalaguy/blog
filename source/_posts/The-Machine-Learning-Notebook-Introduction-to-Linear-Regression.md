@@ -53,6 +53,6 @@ $$
 {Y_i} = \hat{Y_i} + \hat{u_i}
 $$  
 
-Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively.   
+Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively. An estimator is simply a formula which tells us how to estimate the population parameter from the information provided by the sample data available to us.
 
 That's it. This is what sets the foundation for further studying linear regression.
