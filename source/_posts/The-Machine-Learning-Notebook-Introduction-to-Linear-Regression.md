@@ -1,5 +1,5 @@
 ---
-title: 'The Machine Learning Notebook: Introduction to Linear Regression'
+title: 'Introduction to Linear Regression'
 tags:
   - machine learning
 date: 2018-10-28 17:35:15

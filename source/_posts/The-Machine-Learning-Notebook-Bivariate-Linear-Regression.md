@@ -1,5 +1,5 @@
 ---
-title: 'The Machine Learning Notebook: Bivariate Linear Regression'
+title: 'Bivariate Linear Regression'
 tags:
   - machine learning
 date: 2018-11-01 19:16:43
