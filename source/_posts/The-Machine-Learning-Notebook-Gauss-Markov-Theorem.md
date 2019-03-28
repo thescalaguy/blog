@@ -23,7 +23,7 @@ The Gauss-Markov theorem states the following:
 
 We'll go over what it means for an estimator to be best, linear, and unbiased.  
 
-![The graph here shows two normal distributions N(0, 2) in orange and N(0, 3) in blue](unbiased.png)
+{% asset_img unbiased.png %}
 
 ## Linear  
 
