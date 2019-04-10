@@ -12,7 +12,7 @@ In one of the previous posts we looked at the assumptions underlying the classic
 
 To recap briefly, some of the assumptions we made were that:
 
-1. On average, the stochastic error term is zero i.e. $E(u_i | x_i) = 0$. 
+1. On average, the stochastic error term is zero i.e. $E(u_i | X_i) = 0$. 
 2. The data is homoscedastic i.e. the variance / standard deviation of the stochastic error term is a finite value regardless of $X_i$. 
 3. The model is linear in parameters i.e. $\beta_1$ and $\beta_2$ have power 1. 
 4. There is no autocorrelation between the disturbance terms.  
