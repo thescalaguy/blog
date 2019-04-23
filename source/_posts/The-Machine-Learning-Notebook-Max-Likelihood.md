@@ -10,7 +10,15 @@ So far what we've been doing is point estimation using OLS. Another method of es
 
 ## Probability  
 
-When we think of probability, we are thinking about the chance of something happening. For example, if a coin is tossed, what is the chance of getting a head? It's $\frac{1}{2}$. What this means is that probability is a measure of certainty of an event happening in the future. The more frequently an event happens, the more probable it is. This is the frequentist definition of probability. Under this definition, probability is the ratio of the number of times we observe the desired event to the total number of observations.   
+When we think of probability, we are thinking about the chance of something happening in the future. For example, if a coin is tossed, what is the chance of getting a head? It's $\frac{1}{2}$.   
+
+But how did we arrive at the conclusion that the probability of getting a head is $\frac{1}{2}$? This leads us to two varying schools of thoughts on probability - frequentism and bayesianism.  
+
+If the coin were tossed a 1000 times, about half the times the outcome would be a head and half the times it would be a tail. The more frequently an event happens, the more probable / certain it is. This is the frequentist definition of probability. Under this definition, probability is the ratio of the number of times we make the desired observation to the total number of observations.   
+
+In the Bayesian approach, probability is a measure of our certainty about something. In a coin toss, there's a 50% chance of getting a head and a 50% chance of getting a tail because there's only two possible outcomes.
+
+This subtle difference in the definition of probability leads to vastly different statistical methods.    
 
 In the Bayesian definition, each event that occurs follows an observed probability distribution which is based on some underlying true distribution. Calculating the probabilities involves estimating the parameters of the true distribution based on the observed distribution.
 
