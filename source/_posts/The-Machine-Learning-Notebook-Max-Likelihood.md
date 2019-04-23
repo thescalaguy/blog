@@ -99,4 +99,4 @@ The equations above are the normal equations for OLS estimators. What this means
 
 ## Summary  
 
-In summary, max likelihood estimation is an alternative to OLS. The method, however, requires that we make an explicit assumption about tahe probability distribution of the data. Under the normality assumption, the estimators for $\beta_1$ and $\beta_2$ are the same in both MLE and OLS. The ML estimator for $\sigma ^ 2$ is biased downwards but converges to the true value when the sample size increases.
+In summary, MLE is an alternative to OLS. The method, however, requires that we make an explicit assumption about the probability distribution of the data. Under the normality assumption, the estimators for $\beta_1$ and $\beta_2$ are the same in both MLE and OLS. The ML estimator for $\sigma ^ 2$ is biased downwards but converges to the true value when the sample size increases.
