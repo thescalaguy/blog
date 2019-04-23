@@ -20,7 +20,9 @@ In the Bayesian approach, probability is a measure of our certainty about someth
 
 This subtle difference in the definition of probability leads to vastly different statistical methods.    
 
-In the Bayesian definition, each event that occurs follows an observed probability distribution which is based on some underlying true distribution. Calculating the probabilities involves estimating the parameters of the true distribution based on the observed distribution.
+Under frequentism, it is all about the frequency of observations. The event that occurs more frequently is the more probable event. There is no concept of an underlying probability distribution for the event we are trying to observe.  
+
+Under Bayesianism, in contrast, each event that occurs follows an observed probability distribution which is based on some underlying true distribution. Calculating the probabilities involves estimating the parameters of the true distribution based on the observed distribution.
 
 ## Likelihood  
 
