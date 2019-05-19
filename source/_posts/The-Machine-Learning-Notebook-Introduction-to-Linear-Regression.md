@@ -49,11 +49,11 @@ No matter how good our regression model is, there is always going to be some inh
 
 When it comes to applying regression analysis, we won't have access to the population data. Rather, we have access to sample data. Our task is to come up with sample regression coefficients such that they'll be as close as possible to the population regression coefficients. The **sample regression function** is defined as: 
 $$
-{Y_i} = \hat{\beta_1} + \hat{\beta_2}X_i + \hat{u_i} \\\\
-{Y_i} = \hat{Y_i} + \hat{u_i}
+{Y_i} = \hat{\beta}_1 + \hat{\beta}_2X_i + \hat{u}_i \\\\
+{Y_i} = \hat{Y}_i + \hat{u}_i
 $$  
 
-Here $\hat{\beta_1}$, $\hat{\beta_2}$, $\hat{u_i}$, and $\hat{Y_i}$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively. An estimator is simply a formula which tells us how to estimate the population parameter from the information provided by the sample data available to us.  
+Here $\hat{\beta}_1$, $\hat{\beta}_2$, $\hat{u}_i$, and $\hat{Y}_i$ are **estimators** of $\beta_1$, $\beta_2$, $u_i$, and $E(Y|X_i)$ respectively. An estimator is simply a formula which tells us how to estimate the population parameter from the information provided by the sample data available to us.  
 
 ## What it means to be 'Linear'  
 
