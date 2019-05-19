@@ -13,21 +13,23 @@ In the previous post we built the intuition behind linear regression. In this po
 We defined sample regression function as:
 
 $$
-{Y_i} = \hat{\beta_1} + \hat{\beta_2}X_i + \hat{u_i} \\\\
-{Y_i} = \hat{Y_i} + \hat{u_i}
+{Y_i} = \hat{\beta}_1 + \hat{\beta}_2X_i + \hat{u}_i \\\\
+{Y_i} = \hat{Y}_i + \hat{u}_i
 $$  
 
-The term $\hat{u_i}$ is called the **residual**. If we re-write the sample regression function, we get $\hat{u_i} = Y_i - \hat{Y_i}$. The residual then represents how far off our estimated value $\hat{Y_i}$ is from the actual value $Y_i$.<sup>[1]</sup> A reasonable assumption to make is that we should pick $\hat{\beta_1}$ and $\hat{\beta_2}$ such that the sum of $\hat{u_i}$ is the smallest. This would mean that our estimates are close to the actual values.  
+The term $\hat{u}_i$ is called the **residual**. If we re-write the sample regression function, we get $\hat{u}_i = Y_i - \hat{Y}_i$. The residual then represents how far off our estimated value $\hat{Y}_i$ is from the actual value $Y_i$.<sup>[1]</sup> A reasonable assumption to make is that we should pick $\hat{\beta}_1$ and $\hat{\beta}_2$ such that the sum of $\hat{u}_i$ is the smallest. This would mean that our estimates are close to the actual values.  
 
-This assumption, however, does not work. Let's assume that our values for $\hat{u_i}$ are -10, 3, -3, 10. Here the sum is zero but we can see that the first and last predictions are far apart from the actual values. To mitigate this, we can add the squares of the residuals. We need to pick $\hat{\beta_1}$ and $\hat{\beta_2}$ such that the sum of the square of the residuals is the minimum i.e. $\sum{\hat{u_i}^2} = \sum{(Y_i - \hat{Y_i})^2}$ is the least.   
+This assumption, however, does not work. Let's assume that our values for $\hat{u}_i$ are -10, 3, -3, 10. Here the sum is zero but we can see that the first and last predictions are far apart from the actual values. To mitigate this, we can add the squares of the residuals. We need to pick $\hat{\beta}_1$ and $\hat{\beta}_2$ such that the sum of the square of the residuals is the minimum i.e. $\sum{\hat{u}_i^2} = \sum{(Y_i - \hat{Y}_i)^2}$ is the least.   
 
-Again, assuming the values of $\hat{u_i}$ to be -10, 3, -3, 10, the squares are 100, 9, 9, 100. This sums to 218. This shows us that the predicted values are far from the actual values. $\sum{\hat{u_i}^2}$ is called the **residual sum of squares (RSS)** or the **squared error term**.  
+Again, assuming the values of $\hat{u}_i$ to be -10, 3, -3, 10, the squares are 100, 9, 9, 100. This sums to 218. This shows us that the predicted values are far from the actual values. $\sum{\hat{u}_i^2}$ is called the **residual sum of squares (RSS)** or the **squared error term**.  
 
-The method of OLS provides us with estimators $\hat{\beta_1}$ and $\hat{\beta_2}$ such that, for a given sample set, $\sum{\hat{u_i^2}}$ is the least. These estimators are given by the formula:  
+The method of OLS provides us with estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ such that, for a given sample set, $\sum{\hat{u}_i^2}$ is the least. These estimators are given by the formula:  
 
 $$
-\hat{\beta_2} = \frac{\sum{x_iy_i}}{\sum{x_i^2}} \\\\ 
-\hat{\beta_1} = \bar{Y} - \hat{\beta_2}\bar{X}
+\begin{align}
+\hat{\beta}_2 &= \frac{\sum{x_iy_i}}{\sum{x_i^2}} \\\\ 
+\hat{\beta}_1 &= \bar{Y} - \hat{\beta}_2\bar{X}
+\end{align}
 $$
 
 where $x_i$ = $X_i - \bar{X}$, $y_i = Y_i - \bar{Y}$. These are the differences of individual values from their corresponding sample mean $\bar{X}$ or $\bar{Y}$. The estimators thus obtained are called **least-squares estimators**.  
@@ -56,7 +58,7 @@ To see how this contrasts with the original dataset, here's a plot of the origin
 
 {% asset_img Sample_1.png %} 
 
-I'll write some Python + Pandas code to come up with the intermediate calculations and the final $\hat{\beta_1}$ and $\hat{\beta_2}$ values. I highly recommend that you solve this by hand to get the feel for it.  
+I'll write some Python + Pandas code to come up with the intermediate calculations and the final $\hat{\beta}_1$ and $\hat{\beta}_2$ values. I highly recommend that you solve this by hand to get the feel for it.  
 
 {% codeblock lang:python regression.py %}
 def ols(sample):
@@ -107,13 +109,13 @@ Let's plot the line we obtained as a result of this.
 
 ## Interpreting the Results  
 
-Our calculations gave us the results that $\hat{\beta_1} = 9.6969$ and $\hat{\beta_2} = 0.630$. Having a slope ($\hat{\beta_2}$) of $0.630$ means that for every unit increase in income, there's an increase of $0.630$ in expenditure. The intercept $\hat{\beta_2}$ is where the regression line meets the Y axis. This means that even without any income, a persion would have an expenditure of $9.6969$. In a lot of cases, however, the intercept term doesn't really matter as much as the slope and how to interpret the intercept depends upon what the Y axis represents.  
+Our calculations gave us the results that $\hat{\beta}_1 = 9.6969$ and $\hat{\beta}_2 = 0.630$. Having a slope ($\hat{\beta}_2$) of $0.630$ means that for every unit increase in income, there's an increase of $0.630$ in expenditure. The intercept $\hat{\beta}_1$ is where the regression line meets the Y axis. This means that even without any income, a persion would have an expenditure of $9.6969$. In a lot of cases, however, the intercept term doesn't really matter as much as the slope and how to interpret the intercept depends upon what the Y axis represents.  
 
 ## Conclusion  
 
-That's it for this post on bivariate linear regression. We saw how to calculate $\hat{\beta_1}$ and $\hat{\beta_2}$ and worked on a sample problem. We also saw how to interpret the result of the calculations. In the coming post we'll look at how to assess whether the regression line is a good fit.
+That's it for this post on bivariate linear regression. We saw how to calculate $\hat{\beta}_1$ and $\hat{\beta}_2$ and worked on a sample problem. We also saw how to interpret the result of the calculations. In the coming post we'll look at how to assess whether the regression line is a good fit.
 
 
 <hr>  
 
-[1] It's important to not confuse the stochastic error term $u_i$ with the residual $\hat{u_i}$. The stochastic error term represents the inherent variability of data whereas the residual represents the difference between the predicted and actual values of $Y_i$. 
+[1] It's important to not confuse the stochastic error term $u_i$ with the residual $\hat{u}_i$. The stochastic error term represents the inherent variability of data whereas the residual represents the difference between the predicted and actual values of $Y_i$. 
