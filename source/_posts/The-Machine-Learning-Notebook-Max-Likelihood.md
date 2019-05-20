@@ -105,7 +105,7 @@ $$
 \end{align}
 $$  
 
-The equations above are the normal equations for OLS estimators. What this means is that the OLS estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ are the same as the ML estimators $\tilde{\beta}_1$ and $\tilde{\beta}_2$ when we assume they're normally distributed. The estimator for homoscedastic variance under ML is given by $\tilde{\sigma} ^ 2 = \frac{1} {n} \sum{\hat{u_i} ^ 2}$. This estimator underestimates the true $\sigma ^ 2$ i.e. it is biased downwards. However, in large samples, $\tilde{\sigma} ^ 2$ converges to the true value. This means that it is asymptotically unbiased.   
+The equations above are the normal equations for OLS estimators. What this means is that the OLS estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ are the same as the ML estimators $\tilde{\beta}_1$ and $\tilde{\beta}_2$ when we assume they're normally distributed. The estimator for homoscedastic variance under ML is given by $\tilde{\sigma} ^ 2 = \frac{1} {n} \sum{\hat{u}_i ^ 2}$. This estimator underestimates the true $\sigma ^ 2$ i.e. it is biased downwards. However, in large samples, $\tilde{\sigma} ^ 2$ converges to the true value. This means that it is asymptotically unbiased.   
 
 ## Summary  
 
