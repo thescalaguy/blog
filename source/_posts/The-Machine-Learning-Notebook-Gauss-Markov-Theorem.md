@@ -27,14 +27,14 @@ We'll go over what it means for an estimator to be best, linear, and unbiased.
 
 ## Linear  
 
-The dependent variable $Y$ is a linear function of the variables in the model. The model must be linear in parameters. Under this assumption $Y_i = \hat{\beta_1} + \hat{\beta_2} X_i + \hat{u_i}$ and $Y_i = \hat{\beta_1} + \hat{\beta_2} X_i^2 + \hat{u_i}$ are both valid models since the estimators are linear in both of them. 
+The dependent variable $Y$ is a linear function of the variables in the model. The model must be linear in parameters. Under this assumption $Y_i = \hat{\beta}_1 + \hat{\beta}_2 X_i + \hat{u}_i$ and $Y_i = \hat{\beta}_1 + \hat{\beta}_2 X_i^2 + \hat{u}_i$ are both valid models since the estimators are linear in both of them. 
 
 ## Unbiased 
 
-This means that on average, the value of the estimator is the same as the parameter it is estiamting i.e. $E(\hat{\beta_1}) = \beta_1$.
+This means that on average, the value of the estimator is the same as the parameter it is estimating i.e. $E(\hat{\beta}_1) = \beta_1$.
 
 ## Best 
 
-This means that among the class of linear estimators, the OLS estimators will have the least variance. Consider the two normal distributions shown in the graph above for two linear, unbiased estimators $\hat{\beta_1}$ (represented by orange) and $\beta_1^*$ (represented by blue). Also let's assume that the true value of $\beta_1$ is zero. This means that both of these are unbiased since, on average, their value is the same as the true value of the parameter. However, the OLS estimator $\hat{\beta_1}$ is better since it has lesser variance compared to the other estimator. 
+This means that among the class of linear estimators, the OLS estimators will have the least variance. Consider the two normal distributions shown in the graph above for two linear, unbiased estimators $\hat{\beta}_1$ (represented by orange) and $\beta_1^*$ (represented by blue). Also let's assume that the true value of $\beta_1$ is zero. This means that both of these are unbiased since, on average, their value is the same as the true value of the parameter. However, the OLS estimator $\hat{\beta}_1$ is better since it has lesser variance compared to the other estimator. 
 
 Finito.
