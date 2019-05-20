@@ -6,7 +6,7 @@ date: 2019-04-17 11:02:08
 ---
 
 
-The posts so far have covered estimators. An estimator looks at the sample data and comes up with an estimate for some true population parameter. However, how do we know how close, say $\hat{\beta_2}$, is to the true $\beta_2$? This is a question of statistical inference. To be able to make an inference, $\beta_2$ would need to follow some distribution. CLRM makes no assumptions about the distribution of data. CNLRM (Classic Normal Linear Regression Model), however, adds the assumption of normality i.e. the data and parameters are normally distributed.  
+The posts so far have covered estimators. An estimator looks at the sample data and comes up with an estimate for some true population parameter. However, how do we know how close, say $\hat{\beta}_2$, is to the true $\beta_2$? This is a question of statistical inference. To be able to make an inference, $\beta_2$ would need to follow some distribution. CLRM makes no assumptions about the distribution of data. CNLRM (Classic Normal Linear Regression Model), however, adds the assumption of normality i.e. the data and parameters are normally distributed.  
 
 In this post we will cover the normal distribution, CNLRM, and how the assumption of normality helps us.  
 
@@ -20,18 +20,18 @@ $$
 f(x ; \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} e ^ {- \frac{(x-\mu)^2}{2 \sigma ^ 2}}
 $$  
 
-## Distribution of $u_i$, $\hat{\beta_1}$, and $\hat{\beta_2}$
+## Distribution of $u_i$, $\hat{\beta}_1$, and $\hat{\beta}_2$
 
-For us to be able to draw any inference about the estimators $\hat{\beta_1}$ and $\hat{\beta_2}$, we will have to make some assumption about the probability distribution of $u_i$. In one of the previous posts we saw that $\hat{\beta_2} = \frac{\sum{x_iy_i}} {\sum{x_i^2}}$. This can alternatively be written as $\hat{\beta_2} = \frac{\sum{x_iY_i}} {\sum{x_i^2}} = \sum{k_iY_i}$ where $k = \frac{x_i}{\sum{x_i^2}}$. So we have  
+For us to be able to draw any inference about the estimators $\hat{\beta}_1$ and $\hat{\beta}_2$, we will have to make some assumption about the probability distribution of $u_i$. In one of the previous posts we saw that $\hat{\beta}_2 = \frac{\sum{x_iy_i}} {\sum{x_i^2}}$. This can alternatively be written as $\hat{\beta}_2 = \frac{\sum{x_iY_i}} {\sum{x_i^2}} = \sum{k_iY_i}$ where $k = \frac{x_i}{\sum{x_i^2}}$. So we have  
 
 $$
 \begin{align}
-\hat{\beta_2} & = \sum{k_i Y_i} \\\\
+\hat{\beta}_2 & = \sum{k_i Y_i} \\\\
 & = \sum{k_i (\beta_1 + \beta_2X_i + u_i)} 
 \end{align} 
 $$ 
 
-The $k_i$, betas, and $X_i$ are fixed and therefore $\hat{\beta_2}$ is a linear function of $u_i$. Under CNLRM, we assume $u_i$ to be to be normally distributed. A property of normally distributed random variables is that their linear functions are also normally distributed. What this means is that since $\hat{\beta_1}$ and $\hat{\beta_2}$ are linear functions of $u_i$, they are also normally distributed.  
+The $k_i$, betas, and $X_i$ are fixed and therefore $\hat{\beta}_2$ is a linear function of $u_i$. Under CNLRM, we assume $u_i$ to be to be normally distributed. A property of normally distributed random variables is that their linear functions are also normally distributed. What this means is that since $\hat{\beta}_1$ and $\hat{\beta}_2$ are linear functions of $u_i$, they are also normally distributed.  
 As mentioned previously, a normal distribution is described by its mean and variance. This means $u_i$ can also be described by its mean and variance as $u_i \sim \mathcal{N}(0, \sigma^2)$. What this shows us is that we assume, on average, for $u_i$ to be zero and there to be constant variance (homoscedasticity). 
 
 A further assumption we make is that $cov(u_i, u_j) = 0$ where $i \ne j$. This means that the $u_i$ and $u_j$ are uncorrelated and independently distributed because zero correlation between two normally distributed variables implies statstical independence. 
@@ -44,7 +44,7 @@ We assume normality for the following reasons:
 
 First, the $u_i$ subsume the effect of a large number of factors that affect the dependent variable but are not included in the regression model. By using the central limit theorem we can state that the distribution of the sum of these variables will be normal. 
 
-Second, because we assume $u_i$ to be normal, both $\hat{\beta_1}$ and $\hat{\beta_2}$ are normal since they are linear functions of $u_i$.  
+Second, because we assume $u_i$ to be normal, both $\hat{\beta}_1$ and $\hat{\beta}_2$ are normal since they are linear functions of $u_i$.  
 
 Third, the normal distribution is fairly easy to understand as it involves just two parameters, and is extensively studied.  
 
@@ -61,7 +61,7 @@ Combinining 1. and 2. means that the estimators are efficient - they are minimum
 
 ## Misc  
 
-Earlier in the post I mentioned that $\hat{\beta_2} = \frac{\sum{x_iY_i}} {\sum{x_i^2}}$. This section gives the derivation of this expression. We will look at the numerator for ease of calculation.  
+Earlier in the post I mentioned that $\hat{\beta}_2 = \frac{\sum{x_iY_i}} {\sum{x_i^2}}$. This section gives the derivation of this expression. We will look at the numerator for ease of calculation.  
 
 $$
 \begin{align} 
