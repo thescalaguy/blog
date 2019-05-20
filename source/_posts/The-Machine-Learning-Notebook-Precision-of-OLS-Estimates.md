@@ -6,7 +6,7 @@ date: 2019-03-26 15:41:57
 ---
 
 
-The calculation of the estimators $\hat{\beta_1}$ and $\hat{\beta_2}$ is based on sample data. As the sample drawn changes, the value of these estimators also changes. This leaves us with the question of how reliable these estimates are i.e. we'd like to determine the **precision** of these estimators. This can be determined by calculating the **standard error** or **the coefficient of determination**.  
+The calculation of the estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ is based on sample data. As the sample drawn changes, the value of these estimators also changes. This leaves us with the question of how reliable these estimates are i.e. we'd like to determine the **precision** of these estimators. This can be determined by calculating the **standard error** or **the coefficient of determination**.  
 
 ## Standard Error  
 
@@ -26,18 +26,20 @@ Notice that the standard error has an inverse relation with the sample size `n`.
 
 ## Standard Error of OLS Estimates  
 
-The standard error of the OLS estimators $\hat{\beta_1}$ and $\hat{\beta_2}$ is given by: 
+The standard error of the OLS estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ is given by: 
 
 $$
-se(\hat{\beta_2}) = \frac{\sigma}{\sqrt{\sum{x_i^2}}} \\\\ 
-se(\hat{\beta_1}) = \sqrt{\frac{\sum{X_i^2}}{n\sum{x_i^2}}}\sigma
+\begin{align}
+se(\hat{\beta}_2) &= \frac{\sigma}{\sqrt{\sum{x_i^2}}} \\\\ 
+se(\hat{\beta}_1) &= \sqrt{\frac{\sum{X_i^2}}{n\sum{x_i^2}}}\sigma
+\end{align}
 $$
 
 where $\sigma$ is the square root of true but unknown constant of homoscedastic variance $\sigma^2$.  
 
-All of the terms in the equations above except $\sigma^2$ can be calculated from the sample drawn. Therefore, we will need an unbiased estimator $\hat{\sigma}^2 = \frac{\sum{\hat{u_i}^2}}{n - 2}$ . The denominator $n-2$ represents the degrees of freedom. $\sum{\hat{u_i}^2}$ is the residual sum of squares. 
+All of the terms in the equations above except $\sigma^2$ can be calculated from the sample drawn. Therefore, we will need an unbiased estimator $\hat{\sigma}^2 = \frac{\sum{\hat{u}_i^2}}{n - 2}$ . The denominator $n-2$ represents the degrees of freedom. $\sum{\hat{u}_i^2}$ is the residual sum of squares. 
 
-Although $\hat{u_i} = Y_i - \hat{Y_i}$, its summation can be computed with an alternative formula as $$\sum{\hat{u_i}^2} = \sum{y_i^2} - \frac{(\sum{x_iy_i})^2}{\sum{x_i^2}}$$.   
+Although $\hat{u}_i = Y_i - \hat{Y}_i$, its summation can be computed with an alternative formula as $$\sum{\hat{u}_i^2} = \sum{y_i^2} - \frac{(\sum{x_iy_i})^2}{\sum{x_i^2}}$$.   
 
 All of the terms in the above formula would have already been computed as a part of computing the estimators.  
 
@@ -45,11 +47,11 @@ All of the terms in the above formula would have already been computed as a part
 
 As you calculate the estimators and draw the sample regression curve that passes through your data, you need some numeric measure of how good the curve fits the data i.e. a measure of "goodness of fit". This can be given as:   
 
-$$ \hat{\sigma} = \sqrt{\frac{\sum{\hat{u_i}^2}}{n-2}}  $$  
+$$ \hat{\sigma} = \sqrt{\frac{\sum{\hat{u}_i^2}}{n-2}}  $$  
 
 This is the positive square root of the estimator of homoscedastic variance. This is the standard deviation of the $Y$ values about the regerssion curve.  
 
-The standard errors of the estimators $\hat{\beta_1}$ and $\hat{\beta_2}$ will show you how much they fluctuate as you draw the samples. The lesser their standard error, the better. 
+The standard errors of the estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ will show you how much they fluctuate as you draw the samples. The lesser their standard error, the better. 
 
 The square of the standard error is called the mean squared error.
 
