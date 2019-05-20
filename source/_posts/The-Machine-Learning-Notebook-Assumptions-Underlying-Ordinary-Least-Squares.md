@@ -6,7 +6,7 @@ date: 2018-11-12 09:02:15
 ---
 
 
-In the previous post we calculated the values of $\hat{\beta_1}$ and $\hat{\beta_2}$ from a given sample and in closing I mentioned that we'll take a look at finding out whether the sample regression line we obtained is a good fit. In other words, we need to assess how close $\hat{\beta_1}$ and $\hat{\beta_2}$ are to $\beta_1$ and $\beta_2$ or how close $\hat{Y_i}$ is to $E(Y|X_i)$. Recall that the population regression function (PRF) is given by $Y_i = \beta_1 + \beta_2X_i + u_i$. This shows that the value of $Y_i$ depends on $X_i$ and $u_i$. To be able to make any statistical inference about $Y_i$ (and $\beta_1$ and $\beta_2$) we need to make assumptions about how the values of $X_i$ and $u_i$ were generated. We'll discuss these assumptions in this post as they're important for the valid interpretation of the regression estimates. 
+In the previous post we calculated the values of $\hat{\beta}_1$ and $\hat{\beta}_2$ from a given sample and in closing I mentioned that we'll take a look at finding out whether the sample regression line we obtained is a good fit. In other words, we need to assess how close $\hat{\beta}_1$ and $\hat{\beta}_2$ are to $\beta_1$ and $\beta_2$ or how close $\hat{Y}_i$ is to $E(Y|X_i)$. Recall that the population regression function (PRF) is given by $Y_i = \beta_1 + \beta_2X_i + u_i$. This shows that the value of $Y_i$ depends on $X_i$ and $u_i$. To be able to make any statistical inference about $Y_i$ (and $\beta_1$ and $\beta_2$) we need to make assumptions about how the values of $X_i$ and $u_i$ were generated. We'll discuss these assumptions in this post as they're important for the valid interpretation of the regression estimates. 
 
 ## Classic Linear Regression Model (CLRM)  
 
@@ -57,7 +57,7 @@ This is fairly simple to understand. To be able to estimate $\beta_1$ and $\beta
 
 There are a few things we assume about the value of $X$ variables. One, for a given sample they are not all the same i.e. $var(X)$ is a positive number. Second, there are no outliers among the values.  
 
-If we have all the values of $X$ the same in a given sample, the regression line would be a horizontal line and therefore it will be impossible to estimate $\beta_2$ and thus $\beta_1$. This will happen because in the equation $\hat{\beta_2} = \frac{\sum{x_iy_i}}{\sum{x_i^2}}$, the denominator will become zero since $Xi$ and $\bar{X}$ will be the same.
+If we have all the values of $X$ the same in a given sample, the regression line would be a horizontal line and therefore it will be impossible to estimate $\beta_2$ and thus $\beta_1$. This will happen because in the equation $\hat{\beta}_2 = \frac{\sum{x_iy_i}}{\sum{x_i^2}}$, the denominator will become zero since $Xi$ and $\bar{X}$ will be the same.
 
 Furthermore, we assume that there are no outliers in the $X$ values. Suppose there are a few $X$ values which are far apart from the mean value, the regression line which we get will be vastly different depending on whether the sample drawn contains these outliers or not.  
 
