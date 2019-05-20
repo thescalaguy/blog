@@ -65,13 +65,13 @@ $$
 \end{align}
 $$
 
-In the equations above, $f(Y_i) = \frac{1} {\sigma \sqrt{2 \pi}} exp\lbrace -\frac{1}{2} \frac{(Y_i - \beta_1 -\beta_2 X_i)^2} {\sigma ^ 2} \rbrace$ because we assume $Y_i$ to be normally distributed. As mentioned previously, computing the log-likelihood is easier. The log-likelihood is given as:  
+In the equations above, $f(Y_i) = \frac{1} {\sigma \sqrt{2 \pi}} exp \left\lbrace -\frac{1}{2} \frac{(Y_i - \beta_1 -\beta_2 X_i)^2} {\sigma ^ 2} \right\rbrace$ because we assume $Y_i$ to be normally distributed. As mentioned previously, computing the log-likelihood is easier. The log-likelihood is given as:  
 
 $$
 \begin{align}
 \mathcal{l}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2) &= log(\mathcal{L}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2)) \\\\
-&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} exp{ \lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2}  } \rbrace  } \right) \\\\  
-&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} \right) + log \left( exp{ \lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} } \rbrace  } \right) \\\\
+&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2}  } \right\rbrace  } \right) \\\\  
+&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} \right) + log \left( exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} } \right\rbrace  } \right) \\\\
 &= -n log(\sigma) - \frac{n}{2} log(2 \pi) - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} }
 \end{align}
 $$ 
@@ -86,13 +86,13 @@ $$
 \end{align}
 $$
 
-Setting the above equations to zero and letting $\tilde{\beta_1}$, $\tilde{\beta_2}$, and $\tilde{\sigma} ^ 2$ represet the ML estimators, we get:  
+Setting the above equations to zero and letting $\tilde{\beta}_1$, $\tilde{\beta}_2$, and $\tilde{\sigma} ^ 2$ represet the ML estimators, we get:  
 
 $$
 \begin{align}
-\frac{1}{\tilde{\sigma ^ 2}} \sum{(Y_i - \tilde{\beta_1} - \tilde{\beta_2} X_i)} &= 0 \\\\  
-\frac{1}{\tilde{\sigma ^ 2}} \sum{(Y_i - \tilde{\beta_1} - \tilde{\beta_2} X_i)}X_i &= 0 \\\\  
-\- \frac{n}{2 \tilde{\sigma} ^ 2} + \frac{1}{2 \tilde{\sigma} ^ 4} \sum{(Y_i - \tilde{\beta_1} - \tilde{\beta_2} X_i) ^ 2} &= 0
+\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)} &= 0 \\\\  
+\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)}X_i &= 0 \\\\  
+\- \frac{n}{2 \tilde{\sigma} ^ 2} + \frac{1}{2 \tilde{\sigma} ^ 4} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i) ^ 2} &= 0
 \end{align}
 $$
 
@@ -100,12 +100,12 @@ Simplifying the first two equation above, we get:
 
 $$
 \begin{align}  
-\sum{Y_i} &= n\tilde{\beta_1} + \tilde{\beta_2} \sum{X_i} \\\\  
-\sum{Y_iX_i} &= \tilde{\beta_1} \sum{X_i} + \tilde{\beta_2} \sum{X_i^2}
+\sum{Y_i} &= n\tilde{\beta}_1 + \tilde{\beta}_2 \sum{X_i} \\\\  
+\sum{Y_iX_i} &= \tilde{\beta}_1 \sum{X_i} + \tilde{\beta}_2 \sum{X_i^2}
 \end{align}
 $$  
 
-The equations above are the normal equations for OLS estimators. What this means is that the OLS estimators $\hat{\beta_1}$ and $\hat{\beta_2}$ are the same as the ML estimators $\tilde{\beta_1}$ and $\tilde{\beta_2}$ when we assume they're normally distributed. The estimator for homoscedastic variance under ML is given by $\tilde{\sigma} ^ 2 = \frac{1} {n} \sum{\hat{u_i} ^ 2}$. This estimator underestimates the true $\sigma ^ 2$ i.e. it is biased downwards. However, in large samples, $\tilde{\sigma} ^ 2$ converges to the true value. This means that it is asymptotically unbiased.   
+The equations above are the normal equations for OLS estimators. What this means is that the OLS estimators $\hat{\beta}_1$ and $\hat{\beta}_2$ are the same as the ML estimators $\tilde{\beta}_1$ and $\tilde{\beta}_2$ when we assume they're normally distributed. The estimator for homoscedastic variance under ML is given by $\tilde{\sigma} ^ 2 = \frac{1} {n} \sum{\hat{u_i} ^ 2}$. This estimator underestimates the true $\sigma ^ 2$ i.e. it is biased downwards. However, in large samples, $\tilde{\sigma} ^ 2$ converges to the true value. This means that it is asymptotically unbiased.   
 
 ## Summary  
 
