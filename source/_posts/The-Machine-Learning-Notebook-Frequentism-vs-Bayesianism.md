@@ -57,9 +57,9 @@ The caveat here is that for simplicity I've assumed the critical value to be 2 i
 
 A Bayesian credible interval is an interval that has a high posterior probability, $1 - \alpha$, of containing the true value of the parameter. Compared to the frequentist confidence intervals which say that $(1 - \alpha)\%$ of all the intervals calculated will contain the true parameter $\theta$, the Bayesian credible interval says that the calculated interval has $(1 - \alpha)\%$ probability of containing the true parameter. 
 
-Let's suppose we're interested in the proportion of population <sup>[[1]](http://www2.stat.duke.edu/~rcs46/lecturesModernBayes/601-module3-morebayes/lecture5-more-bayes.pdf)</sup> that gets 8 hours of sleep every night. The parameter $\theta$ here now represents proportion. A sample of 27 is drawn of which 11 get 8 hours of sleep every night. Therefore, the random variable $X \sim Binom(27, ~ \theta)$.   
+Let's suppose we're interested in the proportion of population <sup>[[1]](http://www2.stat.duke.edu/~rcs46/lecturesModernBayes/601-module3-morebayes/lecture5-more-bayes.pdf)</sup> that gets 8 hours of sleep every night. The parameter $\theta$ here now represents proportion. A sample of 27 is drawn of which 11 get 8 hours of sleep every night. Therefore, the random variable $X \sim \text{Binom}(27, ~ \theta)$.   
 
-To calculate a Bayesian credible interval, we need to assume a subjective prior. Suppose the prior was $Beta(3.3, 7.2)$. The posterior would thus be $Beta(11 + 3.3, 27 - 11 + 7.2) = Beta(14.3, 23.2)$. This can be calculated using `scipy` as follows:  
+To calculate a Bayesian credible interval, we need to assume a subjective prior. Suppose the prior was $\text{Beta}(3.3, 7.2)$. The posterior would thus be $\text{Beta}(11 + 3.3, 27 - 11 + 7.2) = \text{Beta}(14.3, 23.2)$. This can be calculated using `scipy` as follows:  
 
 {% codeblock lang:python %}
 from scipy import stats
@@ -81,7 +81,7 @@ A thing that I have glossed over is handling of nuisance parameters. Bayesian pr
 
 ## The critique  
 
-The prior is subjective and can change from person to person. This is the frequentist critique of the Bayesian approach; it introduces subjectivity into the equation. The frequentist approach make use of only the likelihood. On the other hand, the Bayesian criticism of the frequentist approach is that it uses an implicit prior. Bayes theorem can be restated as $posterior \propto likelihood \times prior$. For the frequentist approach, which makes use of likelihood, the prior would need to be set to 1 i.e. a flat prior. The Bayesian approach makes the use of prior explicit even if it is subjective.  
+The prior is subjective and can change from person to person. This is the frequentist critique of the Bayesian approach; it introduces subjectivity into the equation. The frequentist approach make use of only the likelihood. On the other hand, the Bayesian criticism of the frequentist approach is that it uses an implicit prior. Bayes theorem can be restated as $\text{posterior} \propto \text{likelihood} \times \text{prior}$. For the frequentist approach, which makes use of likelihood, the prior would need to be set to 1 i.e. a flat prior. The Bayesian approach makes the use of prior explicit even if it is subjective.  
 
 The Bayesian criticism of frequentist procedures is that they do not answer the question that was asked but rather skirt around it. Suppose the question posed was "in what range will the true values of the parameter lie?". The Bayesian credible interval will give one, albeit subjective, interval. The frequentist confidence interval, however, will give many different intervals. In that sense, frequentism isn't answering the question posed.  
 

@@ -26,7 +26,7 @@ For us to be able to draw any inference about the estimators $\hat{\beta}_1$ and
 
 $$
 \begin{align}
-\hat{\beta}_2 & = \sum{k_i Y_i} \\\\
+\hat{\beta}_2 & = \sum{k_i Y_i} \\
 & = \sum{k_i (\beta_1 + \beta_2X_i + u_i)} 
 \end{align} 
 $$ 
@@ -65,11 +65,11 @@ Earlier in the post I mentioned that $\hat{\beta}_2 = \frac{\sum{x_iY_i}} {\sum{
 
 $$
 \begin{align} 
-\sum{x_i y_i} &=  \sum{(X_i - \bar{X}) (Y_i - \bar{Y})} \\\\
-&= \sum{[X_iY_i - X_i\bar{Y} - \bar{X}Y_i + \bar{X}\bar{Y}]} \\\\
-&= \sum{[Y_i(X_i - \bar{X}) - X_i\bar{Y} + \bar{X}\bar{Y}]} \\\\ 
-&= \sum{Y_ix_i} - \sum{X_i\bar{Y}} + n\bar{X}\bar{Y} \\\\ 
-&= \sum{Y_ix_i} - n\bar{X}\bar{Y} + n\bar{X}\bar{Y} \\\\ 
+\sum{x_i y_i} &=  \sum{(X_i - \bar{X}) (Y_i - \bar{Y})} \\
+&= \sum{[X_iY_i - X_i\bar{Y} - \bar{X}Y_i + \bar{X}\bar{Y}]} \\
+&= \sum{[Y_i(X_i - \bar{X}) - X_i\bar{Y} + \bar{X}\bar{Y}]} \\ 
+&= \sum{Y_ix_i} - \sum{X_i\bar{Y}} + n\bar{X}\bar{Y} \\
+&= \sum{Y_ix_i} - n\bar{X}\bar{Y} + n\bar{X}\bar{Y} \\ 
 &= \sum{x_i Y_i} 
 \end{align}
 $$

@@ -27,7 +27,7 @@ The method of OLS provides us with estimators $\hat{\beta}_1$ and $\hat{\beta}_2
 
 $$
 \begin{align}
-\hat{\beta}_2 &= \frac{\sum{x_iy_i}}{\sum{x_i^2}} \\\\ 
+\hat{\beta}_2 &= \frac{\sum{x_iy_i}}{\sum{x_i^2}} \\ 
 \hat{\beta}_1 &= \bar{Y} - \hat{\beta}_2\bar{X}
 \end{align}
 $$

@@ -21,15 +21,13 @@ Formally, a category $C$ consists of the following:
 4. a composition operator assigning each pair of arrows $f$ and $g$, with $cod \space f = dom \space g$ a composite arrow $g \circ f: dom \space f \rightarrow cod \space g$, satisfying the _associative law_:   
  for any arrows $f: A \rightarrow B$, $g: B \rightarrow C$, and $h: C \rightarrow D$ (with $A$, $B$, $C$, and $D$ not necessarily distinct),
  $h \circ (g \circ f) = (h \circ g) \circ f$
-5. for each object $A$, an **identity arrow** $id_A: A \rightarrow A$ satisfying the _identity law_:
+5. for each object $A$, an **identity arrow** $id\_A: A \rightarrow A$ satisfying the _identity law_:
  for any arrow $f: A \rightarrow B$,
  $id_B \circ f = f$ and $f \circ id_A = f$
 
 The formal definition above is taken verbatim from [Basic Category Theory for Computer Scientists](https://mitpress.mit.edu/books/basic-category-theory-computer-scientists).
 
-<center>
 ![Simple Category](https://upload.wikimedia.org/wikipedia/commons/d/d3/Simple-cat.png)
-</center>  
 
 Let's relate the diagram above<sup>[[2]](https://en.wikibooks.org/wiki/Haskell/Category_theory)</sup> to the formal definition that we have. This simple category $C$ has three **objects** $A$, $B$, and $C$. There's three **identity arrows** $id_A$, $id_B$, and $id_C$. These identity arrows satisfy the **identity law**. For example, $id_A \circ g = g$. Intuitively, if you were "standing" on $A$ and you first "walked along" the $id_A$ arrow and then "walked along" the $g$ arrow to reach $B$, it's as good as just "walking along" $g$. 
 

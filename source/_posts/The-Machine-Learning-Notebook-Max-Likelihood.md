@@ -34,7 +34,7 @@ The likelihood of observing the data is represented by the **likelihood function
 
 $$
 \begin{align} 
-\mathcal{L}(y_1, y_2, \dots y_n; \theta) &= f(y_1; \theta) f(y_2; \theta) \dots f(y_n; \theta) \\\\
+\mathcal{L}(y_1, y_2, \dots y_n; \theta) &= f(y_1; \theta) f(y_2; \theta) \dots f(y_n; \theta) \\
 &= \prod \limits_{i = 1}^n f(y_i; \theta)
 \end{align}
 $$
@@ -58,9 +58,9 @@ In regression, we have our data $Y_1, Y_2 \dots Y_n$ which we assume is normally
 
 $$
 \begin{align}
-\mathcal{L}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2) &= f(Y_1, Y_2, \dots Y_n; \beta_1 + \beta_2 X_i, \sigma^2) \\\\
-&= f(Y_1; \beta_1 + \beta_2 X_i, \sigma^2) f(Y_2; \beta_1 + \beta_2 X_i, \sigma^2) \dots f(Y_n; \beta_1 + \beta_2 X_i, \sigma^2) \\\\
-&= \prod \limits_{i = 1}^{n} f(Y_i; \beta_1 + \beta_2 X_i, \sigma^2) \\\\ 
+\mathcal{L}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2) &= f(Y_1, Y_2, \dots Y_n; \beta_1 + \beta_2 X_i, \sigma^2) \\
+&= f(Y_1; \beta_1 + \beta_2 X_i, \sigma^2) f(Y_2; \beta_1 + \beta_2 X_i, \sigma^2) \dots f(Y_n; \beta_1 + \beta_2 X_i, \sigma^2) \\
+&= \prod \limits_{i = 1}^{n} f(Y_i; \beta_1 + \beta_2 X_i, \sigma^2) \\
 &= \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} exp{ \lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2}  } \rbrace  }
 \end{align}
 $$
@@ -69,9 +69,9 @@ In the equations above, $f(Y_i) = \frac{1} {\sigma \sqrt{2 \pi}} exp \left\lbrac
 
 $$
 \begin{align}
-\mathcal{l}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2) &= log(\mathcal{L}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2)) \\\\
-&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2}  } \right\rbrace  } \right) \\\\  
-&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} \right) + log \left( exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} } \right\rbrace  } \right) \\\\
+\mathcal{l}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2) &= log(\mathcal{L}(Y_1, Y_2, \dots Y_n; \beta_1, \beta_2, \sigma^2)) \\
+&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2}  } \right\rbrace  } \right) \\  
+&= log \left( \frac{1}{\sigma ^ n (\sqrt{2 \pi}) ^ n} \right) + log \left( exp{ \left\lbrace - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} } \right\rbrace  } \right) \\
 &= -n log(\sigma) - \frac{n}{2} log(2 \pi) - \frac{1}{2} \sum{ \frac{(Y_i - \beta_1 - \beta_2 X_i) ^ 2} {\sigma ^ 2} }
 \end{align}
 $$ 
@@ -80,19 +80,19 @@ To find the ML estimators, we need to differentiate the log-likelihood function 
 
 $$
 \begin{align}
-\frac{\partial \mathcal{l}}{\partial \beta_1} &= \frac{1}{\sigma ^ 2} \sum{(Y_i - \beta_1 - \beta_2 X_i)}  \\\\
-\frac{\partial \mathcal{l}}{\partial \beta_2} &= \frac{1}{\sigma ^ 2} \sum{(Y_i - \beta_1 - \beta_2 X_i)} X_i \\\\  
+\frac{\partial \mathcal{l}}{\partial \beta_1} &= \frac{1}{\sigma ^ 2} \sum{(Y_i - \beta_1 - \beta_2 X_i)}  \\
+\frac{\partial \mathcal{l}}{\partial \beta_2} &= \frac{1}{\sigma ^ 2} \sum{(Y_i - \beta_1 - \beta_2 X_i)} X_i \\  
 \frac{\partial \mathcal{l}}{\partial \sigma ^ 2} &= - \frac{n}{2 \sigma ^ 2} + \frac{1}{2 \sigma ^ 4} \sum{(Y_i - \beta_1 - \beta_2 X_i) ^ 2}
 \end{align}
 $$
 
-Setting the above equations to zero and letting $\tilde{\beta}_1$, $\tilde{\beta}_2$, and $\tilde{\sigma} ^ 2$ represet the ML estimators, we get:  
+Setting the above equations to zero and letting $\tilde{\beta}_1$, $\tilde{\beta}_2$, and $\tilde{\sigma} ^ 2$ represent the ML estimators, we get:  
 
 $$
 \begin{align}
-\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)} &= 0 \\\\  
-\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)}X_i &= 0 \\\\  
-\- \frac{n}{2 \tilde{\sigma} ^ 2} + \frac{1}{2 \tilde{\sigma} ^ 4} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i) ^ 2} &= 0
+\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)} &= 0 \\ 
+\frac{1}{\tilde{\sigma} ^ 2} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i)}X_i &= 0 \\  
+- \frac{n}{2 \tilde{\sigma} ^ 2} + \frac{1}{2 \tilde{\sigma} ^ 4} \sum{(Y_i - \tilde{\beta}_1 - \tilde{\beta}_2 X_i) ^ 2} &= 0
 \end{align}
 $$
 

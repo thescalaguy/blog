@@ -31,8 +31,10 @@ Here's how the same thing can be done using threading macro:
 The difference here is that the 2-arity version of `map` and `filter` will create intermediate collections while the 1-artity versions won't. Transducers are much more efficient than threading together sequence functions.  
 
 ![Chaining](/images/chain.gif)
-![Transducing](/images/transduce.gif)
-<center>[Source for images](https://medium.com/@roman01la/understanding-transducers-in-javascript-3500d3bd9624)</center>
+![Transducing](/images/transduce.gif)  
+
+
+[Source for images](https://medium.com/@roman01la/understanding-transducers-in-javascript-3500d3bd9624)
 
 ## Inside a transducer  
 Let's look at the 1-arity version of `map` and see what makes a transducer.  

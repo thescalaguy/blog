@@ -14,7 +14,7 @@ The next algebraic structure we'll look at is a functor. In the [introduction](h
 Let $C$ and $D$ be categories. A **functor** $F: C \rightarrow D$ is a map taking each $C$-object $A$ to a $D$-object $F(A)$ and each $C$-arrow $f: A \rightarrow B$ to a $D$ arrow $F(f): F(A) \rightarrow F(B)$, such that all $C$-objects $A$ and composable $C$-arrows $f$ and $g$ 
 
 <ol>
-<li> $F(id\_A) = id\_{F(A)}$ </li>
+<li> $F(id_A) = id_{F(A)}$ </li>
 <li> $F(g \circ f) = F(g) \circ F(f)$
 </ol>
 
@@ -71,7 +71,7 @@ All functors are expected to obey the two laws that we saw in the formal definit
 
 ### First Law
 
-$$F(id\_A) = id\_{F(A)}$$
+$$F(id_A) = id_{F(A)}$$
 
 The first law states that if we map the identity function over a functor, we'll get back a functor which is the same as the original functor.
 

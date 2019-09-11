@@ -34,9 +34,9 @@ This assumption states that the variation of $u_i$ is the same regardless of $X$
 
 $$
 \begin{align}
-var(u_i) & = E[u_i - E(u_i|x_i)]^2 \\\\
-& = E(u_i|X_i)^2 \\\\
-& = E(u_i^2) \\\\
+var(u_i) & = E[u_i - E(u_i|x_i)]^2 \\
+& = E(u_i|X_i)^2 \\
+& = E(u_i^2) \\
 & = \sigma^2
 \end{align}
 $$  
@@ -47,7 +47,9 @@ With this assumption, we assume that the variance of $u_i$ for a given $X_i$ (i.
 
 Given any two $X$ values, $X_i$ and $X_j$ ($i \neq j$), the correlation between any two $u_i$ and $u_j$ is zero. In other words, the observations are independently sampled. Notationally, $cov(u_i, u_j|X_i, X_j) = 0$. This assumption states that there is no **serial correlation** or **autocorrelation** i.e. $u_i$ and $u_j$ are uncorrelated.  
 
-To build an intuition, let's consider the population regression function $Y_t = \beta_1 + \beta_2X_t + u_t$. Now suppose that $u_t$ and $u_{t-1}$ are positively correlated. This means that $Y_t$ depends not only on $X_t$ but also on $u_{t-1}$ because that affects $u_t$. Autocorrelation occurs in timeseries data like stock market trends where the the observation of one day depends on the observation of the previous day. What we assume is that each observation is independent as it is in case of the income-expense example we saw.  
+To build an intuition, let's consider the population regression function $Y_t = \beta_1 + \beta_2X_t + u_t$   
+
+Now suppose that $u\_t$ and $u\_{t-1}$ are positively correlated. This means that $Y\_t$ depends not only on $X\_t$ but also on $u_{t-1}$ because that affects $u_t$. Autocorrelation occurs in timeseries data like stock market trends where the the observation of one day depends on the observation of the previous day. What we assume is that each observation is independent as it is in case of the income-expense example we saw.  
 
 ### 6. The sample size $n$ must be greater than the number of parameters to estimate  
 
@@ -74,7 +76,7 @@ Functionally misspecifying our regression model will also introduce autocorrelat
 
 In the first plot the line fits the sample points properly. In the second one, it doesn't fit properly. The sample points seem to form a curve of some sort while we try to fit a straight line through it. What we get is runs of negative residuals followed by positive residuals which indicates autocorrelation.  
 
-Autocorrelation can also be introduced not just by functionally misspecifying the regression model but also by the nature of data itself. For example, consider timeseries data representing stock market movement. The value of $X_t$ depends on $X_{t-1}$ i.e. the two are correlated.   
+Autocorrelation can also be introduced not just by functionally misspecifying the regression model but also by the nature of data itself. For example, consider timeseries data representing stock market movement. The value of $X\_t$ depends on $X\_{t-1}$ i.e. the two are correlated.   
 
 When there is autocorrelation, the OLS estimators are no longer the best estimators for predicting the value of $Y_i$.  
 

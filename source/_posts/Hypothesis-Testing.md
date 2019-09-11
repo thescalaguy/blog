@@ -37,8 +37,8 @@ Could  an estimate calculated from a sample lead Billy to the light? Let's go ba
 Let $X$ be a random variable representing the height of people such that $X \sim \mathcal{N}(\mu, \sigma^2)$. We're told that the standard deviation $\sigma = 15$. From a sample of size $n = 100$, we get the average height $\bar{X} = 165 \text{cm}$. Could this have come from a population with average height $170 \text{cm}$? Let's write this down as $H\_0$ and $H\_1$. 
 
 $$
-H\_0: \mu = \mu ^ \* = 170 \\\\
-H\_1: \mu \ne 170
+H_0: \mu = \mu ^ * = 170 \\\\
+H_1: \mu \ne 170
 $$ 
 
 Our null hypothesis is that yes, this sample came from a population with average height $170 \text{cm}$ and alternative hypothesis is that no, this did not. To test this, we could use one of two approaches - **confidence intervals** or **significance tests** - and so can Billy.  
@@ -60,8 +60,8 @@ From the standard normal distribution table, we get $P(-1.96 ~ \le Z ~ \le 1.96)
 
 $$
 \begin{align}
-P(-1.96 ~ \le Z ~ \le 1.96) & = 0.95 \\\\
-P(-1.96 ~ \le \frac {\sqrt{n} ~ (\bar{X} - \mu)} {\sigma} ~ \le 1.96) & = 0.95 \\\\
+P(-1.96 ~ \le Z ~ \le 1.96) & = 0.95 \\
+P(-1.96 ~ \le \frac {\sqrt{n} ~ (\bar{X} - \mu)} {\sigma} ~ \le 1.96) & = 0.95 \\
 P\left(\bar{X} - 1.96 ~ \frac{\sigma} {\sqrt{n}} ~ \le \mu ~ \le \bar{X} + 1.96 ~ \frac{\sigma} {\sqrt{n}} \right) & = 0.95
 \end{align}
 $$  
@@ -80,8 +80,8 @@ We know that $Z \sim \mathcal{N}(\mu = 0, \sigma ^ 2 = 1)$. Also, we have enough
 
 $$
 \begin{align}
-Z &= \frac {\sqrt{n} (\bar{X} - \mu)} {\sigma} \\\\
-  &= \frac {\sqrt{100} (165 - 170)} {15} \\\\
+Z &= \frac {\sqrt{n} (\bar{X} - \mu)} {\sigma} \\
+  &= \frac {\sqrt{100} (165 - 170)} {15} \\
   &= -3.33
 \end{align}
 $$ 

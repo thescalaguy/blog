@@ -24,7 +24,7 @@ export LD_LIBRARY_PATH=./hsdis/build/macosx-amd64
 
 Now we're all set to see how JVM generates assembly code. 
 
-### Printing assembly code
+## Printing assembly code
 
 We'll reuse the same inlining code from last time:  
 
@@ -104,7 +104,7 @@ Line #21 to #23 has code to handle exceptions. We know there won't be any except
 
 And finally, there's code to _deoptimize_. In addition to static optimizations, there are some optimizations that the JVM makes which are speculative. This means that the JVM generates assembly code expecting things to go a certain way after it has profiled the interpreted code. However, if the speculation is wrong, the JVM can go back to running the interpreted version.
 
-### Which flags control compilation?
+## Which flags control compilation?
 
 `-XX:CompileThreshold` is the flag which controls the number of call / branch invocations after which the JVM compiles bytecodes to assembly. You can use `-XX:+PrintFlagsFinal` to see the value. By default it is `10000`.
 
@@ -120,7 +120,7 @@ In older JDKs, there was another reason to reduce `CompileThreshold`. The method
 
 In addition, JDK 8+ come with tiered compilation enabled and the `CompileThreshold` is ignored. The idea of there being a "compile threshold", though, does not change. I'm defering the topic of tiered compilation for the sake of simplicity.
 
-### Where is the compiled code stored?  
+## Where is the compiled code stored?  
 
 The compiled code is stored in JVM's code cache. As more methods become hot, the cache starts to get filled. Once the cache is filled, the JVM can no longer compile anything to assembly and will resort to purely interpreteting the bytecodes.   
 
@@ -128,10 +128,10 @@ The size of code cache is platform dependent.
 
 Also, JVM ensures that the access to cache is optimized. The `hlt` instructions in the assembly code exist for aligning the addresses. It is much more efficient for the CPU to read from even addresses than it is to read from odd addresses in memory. The `hlt` instructions ensure that the code is at an even address in memory.
 
-### Which flags control code cache size?  
+## Which flags control code cache size?  
 
 There are two flags which are important in setting the code cache size - `InitialCodeCacheSize` and `ReservedCodeCacheSize`. The first flag indicates the code cache size the JVM will start with and the latter indicates the size to which the code cache can grow. With JDK 8+, `ReservedCodeCacheSize` is large enough so you don't need to set it explicitly. On my machine it is `240` MB (5x what it is for Java 7, `48` MB).  
 
-### Conclusion  
+## Conclusion  
 
 The JVM compiles hot code to assembly and stores it at even addresses in it's code cache for faster access. Executing assembly code is much more efficient than interpreting the bytecodes. You don't really need to look at the assembly code generated everyday but knowing what is generated as your code executes gives you an insight into what the JVM does to make your code run faster.
