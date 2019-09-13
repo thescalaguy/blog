@@ -158,7 +158,7 @@ baidu_push: false
 menu:
   home: / || home
   #about: /about/ || user
-  #tags: /tags/ || tags
+  tags: /tags/ || tags
   #categories: /categories/ || th
   archives: /archives/ || archive
   #schedule: /schedule/ || calendar
@@ -371,13 +371,13 @@ cheers: false
 # TagCloud settings for tags page.
 tagcloud:
   # If true, font size, font color and amount of tags can be customized
-  enable: false
+  enable: true
   # All values below are same as default, change them by yourself
   min: 12 # Minimun font size in px
   max: 30 # Maxium font size in px
   start: "#ccc" # Start color (hex, rgba, hsla or color keywords)
   end: "#111" # End color (hex, rgba, hsla or color keywords)
-  amount: 200 # Amount of tags, change it if you have more than 200 tags
+  amount: 15 # Amount of tags, change it if you have more than 200 tags
 
 # Google Calendar
 # Share your recent schedule to others via calendar page.
