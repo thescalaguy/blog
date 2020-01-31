@@ -48,7 +48,7 @@ Our null hypothesis is that yes, this sample came from a population with average
  
 ### Confidence intervals  
 
-The first method Billy could use is confidence intervals. A confidence interval is a range of values calculated using the estimate $\hat{\theta}$ in which the true value of $\theta$ may lie. The calculation of the interval involves using probability distributions and is best shown with a concrete example.  
+The first method Billy could use is confidence intervals. A confidence interval is a range of values in which the true value of $\theta$ may lie. The calculation of the interval involves using probability distributions and is best shown with a concrete example.  
 
 In the population example $X$ is distributed normally with sample mean $\bar{X} = 165$. Since $X$ is normally distributed, we can convert it to standard normal distribution with $\mu = 0$ and $\sigma = 1$. We can construct a 95% confidence interval and check whether it contains the value of $\mu$. To do this, we will calculate the $Z$ test statistic as follows:
 
