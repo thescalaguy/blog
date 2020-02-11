@@ -16,8 +16,6 @@ For a coin to be fair, the probability $p$ of getting any side is $\frac {1}{2}$
 
 If after flipping the coin 999 times, the test statistic $T = |\hat{p}\_n - \frac {1}{2}|$ is large (i.e. probability of getting one side of the coin is way more than half), we'll reject the null hypothesis and say that Alice has been conned because the coin is likely to favor one side other the other. Otherwise, we'll accept the null hypothesis and say that the coin is indeed fair and Alice is being salty. 
 
-{% asset_img hate.jpg "I hate this idea already." %}
-
 ## But really, what is hypothesis testing?
 
 Hypothesis testing is a way to either accept or reject preconceived notions based on data. For example, if we have a sample of people's heights, can we accept that it is drawn from a normal distribution with average height being 170cm? Let's look at it a little more formally.  
@@ -42,8 +40,6 @@ H_1: \mu \ne 170
 $$ 
 
 Our null hypothesis is that yes, this sample came from a population with average height $170 \text{cm}$ and alternative hypothesis is that no, this did not. To test this, we could use one of two approaches - **confidence intervals** or **significance tests** - and so can Billy.  
-
-{% asset_img "cockadoodledo.jpg" "WTF is going on here. Like, seriously" %}
 
  
 ### Confidence intervals  
@@ -70,7 +66,6 @@ When we plug in our values from the population example, we get $162.06 \le \mu \
  
 I know a lot has been glossed over. Where did $-1.96$ and $1.96$ come from? Why a $95\%$ confidence interval and why not $99\%$? And what puts the "confidence" in confidence interval? All that and much more in the next post. 
  
-{% asset_img getout.jpg "Send help, plis" %}
 
 ### Significance tests
 
@@ -86,8 +81,6 @@ $$
 
 
 As we can see, it does not lie between $-1.96$ and $1.96$ and therefore we reject the null hypothesis. Both the approaches lead to the same conclusion.
-
-{%asset_img enough.jpg "Enough of this bullshit" %} 
 
 ## Conclusion  
 
