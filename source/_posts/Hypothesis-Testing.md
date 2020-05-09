@@ -6,7 +6,7 @@ date: 2019-09-10 12:26:36
 ---
 
 
-Having discussed frequentism and Bayesianism briefly, it's time to move onto hypothesis testing. I was told by an [avid reader of my blog](https://twitter.com/lisamahapatra) that "it reads like a bad textbook". So I am going to try to make it a little more entertaining. 
+Having discussed frequentism and Bayesianism briefly, it's time to move onto hypothesis testing. I was told that I could make my math blogs more entertaining so that's what I am going to do. 
 
 ## What is hypothesis testing?  
 
