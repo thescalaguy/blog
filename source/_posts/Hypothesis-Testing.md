@@ -5,16 +5,15 @@ tags:
 date: 2019-09-10 12:26:36
 ---
 
-
-Having discussed frequentism and Bayesianism briefly, it's time to move onto hypothesis testing. I was told that I could make my math blogs more entertaining so that's what I am going to do. 
+Having discussed frequentism and Bayesianism briefly, it's time to move on to hypothesis testing. 
 
 ## What is hypothesis testing?  
 
-Hypothesis testing is how mathematicians settle their bets. Unlike peasants like ourselves who use a coin flip or fist fights, math nerds like coming up with more sophisticated ways to settle their differences. Let's say two mathematicians - Alice and Bob - are at a bar. Alice feels duped by Bob after having settled a previous bet with a coin flip. She thinks the coin used by Bob was not fair. Bob insists otherwise. How might they test this hypothesis?  
+Hypothesis testing is how mathematicians settle their bets. Unlike people like ourselves who use a coin flip or fist fights, mathematicians like coming up with more sophisticated ways to settle their differences. Let's say two mathematicians Alice and Bob have a bet to settle. Alice feels duped by Bob after having settled a previous bet with a coin flip. She thinks the coin used by Bob was not fair. Bob insists otherwise. How might they test this hypothesis?  
 
 For a coin to be fair, the probability $p$ of getting any side is $\frac {1}{2}$. We'll call Bob's stance "the null hypothesis" ($H\_0: p = \frac{1}{2}$) and Alice's stance "the alternative hypothesis" ($H\_1: p \ne \frac{1}{2}$). How do they decide who's right? 
 
-If after flipping the coin 999 times, the test statistic $T = |\hat{p}\_n - \frac {1}{2}|$ is large (i.e. probability of getting one side of the coin is way more than half), we'll reject the null hypothesis and say that Alice has been conned because the coin is likely to favor one side other the other. Otherwise, we'll accept the null hypothesis and say that the coin is indeed fair and Alice is being salty. 
+If after flipping the coin 999 times, the test statistic $T = |\hat{p}\_n - \frac {1}{2}|$ is large (i.e. probability of getting one side of the coin is way more than half), we'll reject the null hypothesis and say that Alice has been conned because the coin is likely to favor one side other the other. Otherwise, we'll accept the null hypothesis and say that the coin is indeed fair. 
 
 ## But really, what is hypothesis testing?
 
