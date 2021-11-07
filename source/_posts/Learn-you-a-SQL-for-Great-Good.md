@@ -18,7 +18,7 @@ The course, offered by Stanford on edX, provides an introduction to relational d
 
 ### Book - [Learning SQL, 3rd Edition](https://www.oreilly.com/library/view/learning-sql-3rd/9781492057604/)  
 
-If you are a reader, Learning SQL by Alan Beaulieu is the book for you. It begins with a quick introduction of the relational model and then dives head-first into writing SQL queries. It explains everything by examples and also provides exercises at the end of each chapter to solidify learning. The book is intended to be read cover to cover as each chapter covers builds upon the previous one. You will find a comprehensive coverage of SQL from the basics of creating tables, to inserting, retrieving, and deleting data, to the more advanced analytical functions.  
+If you are a reader, Learning SQL by Alan Beaulieu is the book for you. It begins with a quick introduction of the relational model and then dives head-first into writing SQL queries. It explains everything by examples and also provides exercises at the end of each chapter to solidify learning. The book is intended to be read cover to cover as each chapter builds upon the previous one. You will find a comprehensive coverage of SQL from the basics of creating tables, to inserting, retrieving, and deleting data, to the more advanced analytical functions.  
 
 ### Website - [SQLBolt](https://sqlbolt.com/)  
 
