@@ -33,7 +33,16 @@ Once you have a firm grasp of the basics, the next step is to get some practice.
 
 PgExercises is a good place to start practicing your new SQL skills. You are presented with the database of a fictitious country club on which the problems are based. The problems begin with simple retrieval of data and gradually become more involved by introducing conditional statements, and so on. The nice thing about PgExercises is that you can solve all the problems on the website itself and get immediate feedback on whether your answer is correct or not. There is an option to get a hint if you are stuck and to view the answer if you are really stuck.  
 
-You can also use PgExercises to prepare for an interview. Set a timer when solving the exercises and don't look at the hints. This will give you an indication of how prepared you are.
+You can also use PgExercises to prepare for an interview. Set a timer when solving the exercises and don't look at the hints. This will give you an indication of how prepared you are.  
+
+### Website - [Window Functions](https://www.windowfunctions.com/)  
+
+If you're asked to find out the maximum or minimum value among a group of rows, you'd probably come up with a combination of GROUP BY clause along with MIN or MAX functions. What if, instead, you were asked to rank your results in decreasing order? SQL allows you to do that using the RANK function.   
+
+MIN, MAX, and AVG are aggregate functions whereas RANK is a window function. If you'd like to learn how to use window functions, click on the link in the title. The Window Functions website begins with a refresher on GROUP BY and HAVING clauses and then proceeds to introduce you to window functions. Like PgExercieses, you'll be solving problems in an interactive editor using Postgres. All this on a cute dataset of cats.  
+
+Use Window Functions and PgExercises to prepare for your upcoming interviews.
+
 
 ### Website - [AdvancedSQLPuzzles](https://advancedsqlpuzzles.com/)  
 
