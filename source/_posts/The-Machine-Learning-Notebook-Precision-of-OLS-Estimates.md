@@ -3,6 +3,7 @@ title: Precision of OLS Estimates
 tags:
   - machine learning
 date: 2019-03-26 15:41:57
+mathjax: true
 ---
 
 

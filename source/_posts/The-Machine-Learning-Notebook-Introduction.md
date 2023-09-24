@@ -3,6 +3,7 @@ title: 'The Machine Learning Notebook: Introduction'
 tags:
   - machine learning
 date: 2018-10-24 21:35:58
+mathjax: true
 ---
 
 

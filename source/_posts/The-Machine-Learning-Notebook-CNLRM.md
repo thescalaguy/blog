@@ -3,6 +3,7 @@ title: Classic Normal Linear Regression Model
 tags:
   - machine learning
 date: 2019-04-17 11:02:08
+mathjax: true
 ---
 
 

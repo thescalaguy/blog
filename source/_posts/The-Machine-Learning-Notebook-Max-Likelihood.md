@@ -3,6 +3,7 @@ title: Max Likelihood
 tags:
   - machine learning
 date: 2019-04-23 07:58:53
+mathjax: true
 ---
 
 

@@ -3,6 +3,7 @@ title: Frequentism vs Bayesianism
 tags:
   - machine learning
 date: 2019-05-10 11:23:25
+mathjax: true
 ---
 
 

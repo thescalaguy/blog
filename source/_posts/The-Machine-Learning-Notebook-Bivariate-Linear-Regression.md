@@ -3,6 +3,7 @@ title: 'Bivariate Linear Regression'
 tags:
   - machine learning
 date: 2018-11-01 19:16:43
+mathjax: true
 ---
 
 

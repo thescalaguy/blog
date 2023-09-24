@@ -3,6 +3,7 @@ title: Assumptions Underlying Ordinary Least Squares
 tags:
   - machine learning
 date: 2018-11-12 09:02:15
+mathjax: true
 ---
 
 

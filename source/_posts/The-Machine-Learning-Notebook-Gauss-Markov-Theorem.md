@@ -3,6 +3,7 @@ title: Gauss-Markov Theorem
 tags:
   - machine learning
 date: 2019-03-28 14:40:03
+mathjax: true
 ---
 
 
