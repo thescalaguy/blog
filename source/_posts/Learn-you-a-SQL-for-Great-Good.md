@@ -6,11 +6,11 @@ date: 2021-11-07 12:53:22
 ---
 
 
-Lately I have been spending some time on [Reddit's /r/SQL](https://www.reddit.com/r/SQL/) and a question that comes up frequently is where to find good resources to learn SQL. If you are looking to start a career in data engineering or business intelligence then familiarity with relational databases and SQL is a must. This post traces a learning path to level up your SQL skills. I will list down courses, books, and webistes which you can use to level up your SQL skills. 
+Lately I have been spending some time on [Reddit's /r/SQL](https://www.reddit.com/r/SQL/) and a question that comes up frequently is where to find good resources to learn SQL. This post traces a learning path. I will list down courses, books, and websites which you can use to learn SQL. 
 
 ## Getting Started  
 
-The first step in the learning path is to get comfortable with the relational model. Simply put, when data is stored in a relational form it is stored in tables and rows. Organizations big and small use relational databases to store and access their data. Depending on whether you prefer books or courses, you can pick one of the following.  
+The first step is to get comfortable with the relational model. Depending on whether you prefer books or courses, you can pick one of the following.  
 
 ### Course - [Databases: Relational Databases and SQL](https://www.edx.org/course/databases-5-sql)
 
@@ -29,7 +29,7 @@ SQLBolt is a good website to learn the basics of SQL. However, there are a few t
 ## Practice, Practice, Practice
 
 Once you have a firm grasp of the basics, the next step is to get some practice.  
-### Website - [PgExercises](pgexercises.com/)  
+### Website - [PgExercises](https://pgexercises.com/)  
 
 PgExercises is a good place to start practicing your new SQL skills. You are presented with the database of a fictitious country club on which the problems are based. The problems begin with simple retrieval of data and gradually become more involved by introducing conditional statements, and so on. The nice thing about PgExercises is that you can solve all the problems on the website itself and get immediate feedback on whether your answer is correct or not. There is an option to get a hint if you are stuck and to view the answer if you are really stuck.  
 
@@ -48,5 +48,4 @@ Use Window Functions and PgExercises to prepare for your upcoming interviews.
 
 If you are looking for something more mind-bending then head over to AdvancedSQLPuzzles. It is a collection of 40 puzzles that will help you determine your level of expertise with SQL. The only caveat to using the website is that you will have to put in some effort to set up a local database before you can start solving the puzzles. Additionally, the solutions are written in T-SQL so you might need to translate the solutions to your favorite dialect of SQL.  
 
-
-That's it. These are the resources I'd found to learn SQL and find myself revisiting these from time to time. Have a resource to learn SQL? Please drop them in the comments.
+Finito.
