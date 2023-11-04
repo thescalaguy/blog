@@ -156,9 +156,9 @@ SELECT * FROM warehouse.people LIMIT 1;
 and this gives us 
 
 {% code %}
-| customer_id | id    | name           | created_at          | updated_at | deleted_at | rowno |
-|-------------|-------|----------------|---------------------|------------|------------|-------|
-| 1           | 28910 | Douglas Becker | 2023-11-03 11:42:09 | NULL       | NULL       | 1     |
+| customer_id | id    | name           | created_at          | updated_at | deleted_at |
+|-------------|-------|----------------|---------------------|------------|------------|
+| 1           | 28910 | Douglas Becker | 2023-11-03 11:42:09 | NULL       | NULL       |
 {% endcode %}  
 
 That's it. That's how you can set up a real-time datawarehouse using Doris, Debezium, and Kafka.
