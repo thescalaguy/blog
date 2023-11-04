@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS ingest.people (
     ts_ms BIGINT
 ) 
 UNIQUE KEY (id, customer_id)
-DISTRIBUTED BY HASH (customer_id, id) BUCKETS 1
+DISTRIBUTED BY HASH (customer_id) BUCKETS 1
 PROPERTIES (
     "replication_num" = "1",
     "enable_unique_key_merge_on_write" = "true"
