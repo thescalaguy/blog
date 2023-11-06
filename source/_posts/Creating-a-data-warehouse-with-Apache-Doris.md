@@ -6,7 +6,7 @@ date: 2023-11-04 19:06:50
 ---
 
 
-Over the last few weeks I've been looking at ways to create a datawarehouse. The aim is to bring together disparate sources of data so that they can be analysed to create reports and dashboards. There are many open-source and closed-source options available like Snowflake, Clickhouse, Apache Pinot, etc. However, I ended up settling for Apache Doris. In this post I will go over how you can replicate data into Doris using Kafka. I will use Debezium to replicate a Postgres table into the warehouse.
+Over the last few weeks I've been looking at ways to create a data warehouse. The aim is to bring together disparate sources of data so that they can be analysed to create reports and dashboards. There are many open-source and closed-source options available like Snowflake, Clickhouse, Apache Pinot, etc. However, I ended up settling for Apache Doris. In this post I will go over how you can replicate data into Doris using Kafka. I will use Debezium to replicate a Postgres table into the warehouse.
 
 ## Setting things up 
 
@@ -161,4 +161,4 @@ and this gives us
 | 1           | 28910 | Douglas Becker | 2023-11-03 11:42:09 | NULL       | NULL       |
 {% endcode %}  
 
-That's it. That's how you can set up a real-time datawarehouse using Doris, Debezium, and Kafka.
+That's it. That's how you can set up a real-time data warehouse using Doris, Debezium, and Kafka.
