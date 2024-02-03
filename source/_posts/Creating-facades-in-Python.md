@@ -120,6 +120,22 @@ def register(calendar: Calendar):
 
 `register` accepts as argument the calendar for which we're registering a function. It returns another higher-order function which puts the actual function in the registry. Since the actual logic of the execution is in the decorated function, we simply return the original function `func`.  
 
+Finally, we register functions for different calendars.  
+
+{% code lang:python %}
+@register(Calendar.GOOGLE)
+def book_google(meeting: Meeting) -> bool:
+    print(f"Booked Google meeting")
+    return True
+
+
+@register(Calendar.OUTLOOK)
+def book_google(meeting: Meeting) -> bool:
+    print(f"Booked Outlook meeting")
+    return True
+{% endcode %}
+
+
 We'll put all of this code in action by trying to book a meeting on Google calendar.  
 
 {% code lang:python %}
@@ -134,6 +150,6 @@ if __name__ == "__main__":
     book_meeting(meeting=meeting)
 {% endcode %}  
 
-This prints "Booked Google meeting", like we'd expect. We can now continue to add more functions which contain logic for specific calendars. Our library can now continue to evolve without any change to the exposed interface. It's also possible to organise functions into their own modules, import the `register` decorator, and add decorate them to add them to the registry. This has two main benefits. One, we keep the code well structured. Two, the code for different versions of the same calendar can stay separated; we avoid having to write `if` checks to see the calendar version since that can be made part of the enum itself, like `GOOGLE_V1`.  
+This prints "Booked Google meeting", like we'd expect. We can now continue to add more functions which contain logic for specific calendars. Our library can evolve without any change to the exposed interface. It's also possible to organise functions into their own modules, import the `register` decorator, and decorate them to add them to the registry. This has two main benefits. One, we keep the code well structured. Two, the code for different versions of the same calendar can stay separated; we avoid having to write `if` checks to see the calendar version since that can be made part of the enum itself, like `GOOGLE_V1`.  
 
 That's it. That's how you can create a facade in Python.
