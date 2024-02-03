@@ -130,7 +130,7 @@ def book_google(meeting: Meeting) -> bool:
 
 
 @register(Calendar.OUTLOOK)
-def book_google(meeting: Meeting) -> bool:
+def book_outlook(meeting: Meeting) -> bool:
     print(f"Booked Outlook meeting")
     return True
 {% endcode %}
