@@ -1,7 +1,7 @@
 ---
 title: Setting up a SQL IDE with Apache Superset
 tags:
-  - misc
+  - architecture
 date: 2024-02-08 20:01:39
 ---
 
