@@ -23,6 +23,6 @@ Thank you for reading.
 
 ### Footnotes and References  
 
-[1] We can view this essay mathematically, too. The first model is a set of binary values $\\{\text{war}, \text{peace}\\}$. The second model can be viewed as a set of ordinal values where $\text{war} < \text{stalemate} < \text{peace}$. Finally, the third model can be viewed as a range, with values between $0$ and $1$, inclusive, where a value of $0.5$ represents stalemate.  
+[1] We can view this essay mathematically, too. The first model is a set of ordinal values $\\{\text{war}, \text{peace}\\}$ such that $\text{war} < \text{peace}$. The second model introduces one more value in the set, $\text{stalemate}$, such that $\text{war} < \text{stalemate} < \text{peace}$. Finally, the third model can be viewed as a range, with values between $0$ and $1$, inclusive, where a value of $0.5$ represents stalemate.  
 [2] We can also come up with interactions among nations which can act as milestones to measure progress as they move from war, to stalemate, and then to peace. For example, some amount of trade and commerce can indicate a state of transitioning to a stalemate, whereas completely opening up to trade and commerce indicates transitioning to peace.  
 [3] Combine the two footnotes, and we can empirically measure the state of relations between two nations. Perhaps someday I will write about it and call it 'Peace, Precisely'.
