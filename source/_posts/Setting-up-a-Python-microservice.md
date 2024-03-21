@@ -17,7 +17,7 @@ We'll look at two key parts of creating a microservice: telemetry, and profiling
 
 Briefly, we will use a combination of zero-code and code-based instrumentation offered by OTel. The zero-code instrumentaion is helpful as it adds instrumentation to the libraries that we are using. If we'd like to instrument our code, we'll have to use code-based instrumentaion and add it to the source ourselves.
 
-Finally, the setup consists of two Flask apps running on the machine; everything else runs as Docker containers. We'll run an OTel Collector exporter to collect the metrics and logs emitted from OpenTelemetry, Jaeger to display the distributed trace, and Parca for continuous profiling.<sup>[1]</sup>
+Finally, the setup consists of two Flask apps, and Parca Agent running on the machine; everything else runs as Docker containers. We'll run an OTel Collector exporter to collect the metrics and logs emitted from OpenTelemetry, Jaeger to display the distributed trace, and Parca Server for continuous profiling.<sup>[1]</sup>
 
 ## Getting Started  
 
@@ -500,7 +500,7 @@ That's it. We've added profiling to our service.
 
 ## Conclusion  
 
-We saw how we can add telemetry using OTel, and profiling using Parca. Both of these great ways to observe a service in production. However, as of writing, both of these projects are in their early stages as can be seen from functionality that is yet to be developed. For example, OTel's Python SDK is yet to add support for logging, and Parca only supports CPU profiling. Despite this, they're both worth following as they let us add observability to our services without much effort.  
+We saw how we can add telemetry using OTel, and profiling using Parca. Both of these are great ways to observe a service in production. However, as of writing, both of these projects are in their early stages as can be seen from functionality that is yet to be developed. For example, OTel's Python SDK is yet to add support for logging, and Parca only supports CPU profiling. Despite this, they're both worth following as they let us add observability to our services without much effort.  
 
 This is my opinion on how to create a microservice with observability baked in. 
 
