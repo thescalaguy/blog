@@ -502,7 +502,7 @@ That's it. We've added profiling to our service.
 
 We saw how we can add telemetry using OTel, and profiling using Parca. Both of these are great ways to observe a service in production. However, as of writing, both of these projects are in their early stages as can be seen from functionality that is yet to be developed. For example, OTel's Python SDK is yet to add support for logging, and Parca only supports CPU profiling. Despite this, they're both worth following as they let us add observability to our services without much effort.  
 
-This is my opinion on how to create a microservice with observability baked in. 
+This is my opinion on how to create a microservice with observability baked in. [The code for this post is available on GitHub.](https://github.com/thescalaguy/microservice)
 
 ### Footnotes and References
 
