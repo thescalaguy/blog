@@ -227,7 +227,7 @@ Let us now look at a span from the second service. It has the same `trace_id` as
 }
 {% endcode %}
 
-If we were to depict the flow of request as a tree we get the.
+If we were to depict the flow of request as a tree we get the following.
 
 {% code %}
 Root Span
@@ -473,7 +473,7 @@ if __name__ == "__main__":
         response.raise_for_status()
 {% endcode %}  
 
-We'll now run the agent and the services. The Parca Server which receives the profiles and displays them is part of the Docker compose file and will be running alongside the agent.  
+We'll now run the agent and the services. The Parca Server which receives the profiles and displays them is part of the Docker compose file. The agent will run on the machine and send the profiles to the server.  
 
 {% code lang:bash %}
  sudo ./parca-agent --remote-store-address="localhost:7070" --node="laptop" --http-address="0.0.0.0:7071" --remote-store-insecure

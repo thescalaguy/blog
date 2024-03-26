@@ -129,18 +129,6 @@ def save_with_db(
 
     with db.bind_ctx(models=[instance.__class__]):
         instance.save(force_insert=force_insert)
-
-
-@contextmanager
-def read_with_db(
-    query: SelectQuery,
-    db: Database,
-    models: list[Type[Model]] | None = None,
-):
-    models = models if models else [query.model().__class__]
-
-    with db.bind_ctx(models=models):
-        yield query
 {% endcode %}  
 
 What allows us to switch the database at runtime is the `bind_ctx` method of the Peewee `Database` instance. This temporarily binds the model to the database that was retrieved using the `Shard`. In essence, we're storing and retrieving the data from the right database.  
@@ -252,4 +240,4 @@ customer_id
 
 ## Conclusion  
 
-That's it. That's how we can connect a Flask service to multiple databases dynamically. Please note that the code is yet to be pushed to a Github repo since it needs some refactoring.
+That's it. That's how we can connect a Flask service to multiple databases dynamically.
