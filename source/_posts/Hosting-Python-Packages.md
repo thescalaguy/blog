@@ -6,7 +6,7 @@ date: 2024-03-22 22:04:29
 ---
 
 
-In the [previous post](2024/03/21/Setting-up-a-Python-microservice/) we saw how to create Python microservices. It's likely that these microservices will share code. For example libraries for logging, accessing the database, etc. In this post we'll see how to create and host Python packages.  
+In the [previous post](/2024/03/21/Setting-up-a-Python-microservice/) we saw how to create Python microservices. It's likely that these microservices will share code. For example libraries for logging, accessing the database, etc. In this post we'll see how to create and host Python packages.  
 
 ## Before We Begin
 
