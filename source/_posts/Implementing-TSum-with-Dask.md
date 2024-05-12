@@ -6,7 +6,7 @@ date: 2024-04-07 11:45:43
 ---
 
 
-In one of the [previous blog post](/2018/10/21/Implementing-TSum-An-Algorithm-for-Table-Summarization/) I'd written about implementing TSum, a table-summarization algorithm from Google Research. The implementation was written using Javascript and was meant for small datasets that can be summarized within the browser itself. I recently ported the implementation to [Dask](https://www.dask.org/) so that it can be used for larger datasets that consist of many rows. In a nutshell, it lets us summarize a Dask DataFrame and find representative patterns within it. In this post we'll see how to use the algorithm to summarize a Dask DataFrame, and run benchmarks to see its performance. 
+In one of the [previous blog posts](/2018/10/21/Implementing-TSum-An-Algorithm-for-Table-Summarization/) I'd written about implementing TSum, a table-summarization algorithm from Google Research. The implementation was written using Javascript and was meant for small datasets that can be summarized within the browser itself. I recently ported the implementation to [Dask](https://www.dask.org/) so that it can be used for larger datasets that consist of many rows. In a nutshell, it lets us summarize a Dask DataFrame and find representative patterns within it. In this post we'll see how to use the algorithm to summarize a Dask DataFrame, and run benchmarks to see its performance. 
 
 ## Before We Begin  
 
