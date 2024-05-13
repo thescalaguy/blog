@@ -10,17 +10,29 @@ In one of the [previous posts](/2024/03/25/Scaling-Python-Microservices/) we saw
 
 ## Before We Begin
 
-The gist of scaling by sharding is to use [PgCat](https://github.com/postgresml/pgcat), a Postgres connection pooler with experimental support for sharding. Although I was able to get the data to shard across multple Docker containers, I was only able to read the data back from the first partition of the table which is in the first Docker container. The count query below, run against the PgCat instance, shows 2509 rows instead of 5000.
+The gist of scaling by sharding is to split the table into multiple partitions and let each of these be hosted on a separate host. For the purpose of this post we'll use a simple setup that consists of four partitions that are spread over two hosts. We'll use Postgres' Foreign Data Wrapper (FDW) to connect one instance of Postgres to another instance of Postgres. We'll store partitions in both these hosts, and create a table which uses these partitions. Querying this table would allow us to query data from all the partitions. 
+
+## Getting Started
+
+My setup has two instances of Postgres, both of which will host partitions. One of them will also contain the base table which will use these partitions. We'll begin by logging into the first instance and creating the FDW extension which ships natively with Postgres.  
 
 {% code lang:sql %}
-postgres=# SELECT COUNT(*) FROM person;
- count 
--------
-  2509
-(1 row)
+CREATE EXTENSION postgres_fdw;
+{% endcode %}  
+
+Next, we'll tell the first instance that there is a second instance of Postgres that we can connect to. Since both of these instances are running as Docker containers, I will use the hostname in the SQL query.  
+
+{% code lang:sql %}
+CREATE SERVER postgres_5 FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'postgres_5', dbname 'postgres');
+{% endcode %}  
+
+Next, we'll create a user mapping. This allows the user of the first instance to log into the second instance as one of its users. We're simply mapping the `postgres` user of the first instance to the `postgres` instance of the second instance.
+
+{% code lang:sql %}
+CREATE USER MAPPING FOR postgres SERVER postgres_5 OPTIONS (user 'postgres', password 'my-secret-pw');
 {% endcode %}
 
-The statements to create one of the tables and its partition are given below.
+Next, we'll create the base table. There are a couple of things to notice. First, we use the `PARTITION BY` clause to specify that the table is partitioned. Second, there is no primary key on this table. Specifying a primary key prevents us from using foreign tables so we'll omit them.
 
 {% code lang:sql %}
 CREATE TABLE person (
@@ -28,90 +40,60 @@ CREATE TABLE person (
   quarter BIGINT NOT NULL,
   name TEXT NOT NULL,
   address TEXT NOT NULL,
-  customer_id TEXT NOT NULL,
-  PRIMARY KEY (id, quarter)
+  customer_id TEXT NOT NULL
 ) PARTITION BY HASH (quarter);
+{% endcode %}
 
+Next, we'll create two partitions that reside on the first instance. We could, if the data were large enough, host each of these on separate instances. For the purpose of this post, we'll host them on the same instance. 
+
+{% code lang:sql %}
 CREATE TABLE person_0 PARTITION OF person FOR VALUES WITH (MODULUS 4, REMAINDER 0);
+CREATE TABLE person_1 PARTITION OF person FOR VALUES WITH (MODULUS 4, REMAINDER 1);
+{% endcode %}  
+
+We'll now switch to the second instance and create two tables which will host the remaining two partitions.
+
+{% code lang:sql %}
+CREATE TABLE person_2 (
+  id BIGSERIAL NOT NULL,
+  quarter BIGINT NOT NULL,
+  name TEXT NOT NULL,
+  address TEXT NOT NULL,
+  customer_id TEXT NOT NULL
+);
+
+
+CREATE TABLE person_3 (
+  id BIGSERIAL NOT NULL,
+  quarter BIGINT NOT NULL,
+  name TEXT NOT NULL,
+  address TEXT NOT NULL,
+  customer_id TEXT NOT NULL
+);
 {% endcode %}
 
-## Getting Started
+Once this is done, we'll go back to the first instance and designate these tables as partitions of the base table.
 
-My setup consists of Docker containers for the API which will receive our request, another API which will return the connection information, an instance of PGCat, and four instances of Postgres which will store the sharded data. The API which returns the connection information returns the host and port of the PGCat instance rather than the actual database. PGCat then handles the reads and writes.
+{% code lang:sql %}
+CREATE FOREIGN TABLE person_2 PARTITION OF person FOR VALUES WITH (MODULUS 4, REMAINDER 2) SERVER postgres_5;
+CREATE FOREIGN TABLE person_3 PARTITION OF person FOR VALUES WITH (MODULUS 4, REMAINDER 3) SERVER postgres_5;
+{% endcode %}  
 
-To use PGCat, we simply provide a configuration file which contains information on which database to connect to and how to shard the data.
-
-{% code lang:yaml %}
-pgcat:
-  hostname: pgcat
-  image: ghcr.io/postgresml/pgcat:latest
-  ports:
-    - "14432:6432"
-    - "9930:9930"
-  command:
-    - "pgcat"
-    - "/etc/pgcat/pgcat.toml"
-  volumes:
-    - "${PWD}/scripts/pgcat.toml:/etc/pgcat/pgcat.toml"
-  depends_on:
-    - postgres_4
-{% endcode %}
-
-We have the following information in the TOML file, along with the connection credentials.
-
-{% code lang:toml %}
-[pools.postgres]
-sharding_function = "pg_bigint_hash"
-
-# Automatically parse this from queries and route queries to the right shard!
-automatic_sharding_key = "person.quarter"
-
-# Shard 0
-[pools.postgres.shards.0]
-# [ host, port, role ]
-servers = [
-    [ "postgres_4", 5432, "primary" ],
-    [ "postgres_4", 5432, "replica" ]
-]
-# Database name (e.g. "postgres")
-database = "postgres"
-
-[pools.postgres.shards.1]
-# [ host, port, role ]
-servers = [
-    [ "postgres_5", 5432, "primary" ],
-    [ "postgres_5", 5432, "replica" ]
-]
-# Database name (e.g. "postgres")
-database = "postgres"
-
-[pools.postgres.shards.2]
-# [ host, port, role ]
-servers = [
-    [ "postgres_6", 5432, "primary" ],
-    [ "postgres_6", 5432, "replica" ]
-]
-# Database name (e.g. "postgres")
-database = "postgres"
-
-[pools.postgres.shards.3]
-# [ host, port, role ]
-servers = [
-    [ "postgres_7", 5432, "primary" ],
-    [ "postgres_7", 5432, "replica" ]
-]
-# Database name (e.g. "postgres")
-database = "postgres"
-{% endcode %}
-
-As you can see, we specify the hosts which will contain each of the shards. The `automatic_sharding_key` specifies the column which will be used to select the shard and is the fully-qualified name containing the table name and column name. Although the documentation states that the table name is optional, omitting the table name raises an error upon starting the PgCat container. I believe this is by design where one pool is meant to be used to shard a single table. If you have multiple tables you'll have to specify multiple pools in the configuration file which could perhaps be hosted on the same physical hosts.  
-
-With the setup done, we can make requests to the API using Apache Bench.
+That's it. This is all we need to partition data across multiple Postgres hosts. We'll now run a benchmark to insert data into the table and its partitions.
 
 {% code lang:bash %}
 ab -p /dev/null -T "Content-Type: application/json" -n 5000 -c 100 -H "X-Customer-ID: 4" http://localhost:5000/person
 {% endcode %}  
 
-Since the connection information returned from the API points to the PgCat instance, the writes will be routed to the proper shards by PgCat. From the prespective of the application, we're connecting to a single Postgres instance.
+Once the benchmark is complete, we can query the base table to see that we have 5000 rows.  
 
-That's it. That's how we can extend the architecture mentioned previously to now handle large customers with data that does not fit on a single machine.
+{% code lang:sql %}
+SELECT COUNT(*) FROM person;
+
+count
+5000
+{% endcode %}  
+
+What I like about this approach is that it is built using functionality that is native to Postgres - FDW, partitions, and external tables. Additionally, the sharding is transparent to the application; it sees a single Postgres instance.
+
+Finito.
