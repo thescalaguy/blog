@@ -26,7 +26,7 @@ Next, we'll tell the first instance that there is a second instance of Postgres 
 CREATE SERVER postgres_5 FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host 'postgres_5', dbname 'postgres');
 {% endcode %}  
 
-Next, we'll create a user mapping. This allows the user of the first instance to log into the second instance as one of its users. We're simply mapping the `postgres` user of the first instance to the `postgres` instance of the second instance.
+Next, we'll create a user mapping. This allows the user of the first instance to log into the second instance as one of its users. We're simply mapping the `postgres` user of the first instance to the `postgres` user of the second instance.
 
 {% code lang:sql %}
 CREATE USER MAPPING FOR postgres SERVER postgres_5 OPTIONS (user 'postgres', password 'my-secret-pw');
