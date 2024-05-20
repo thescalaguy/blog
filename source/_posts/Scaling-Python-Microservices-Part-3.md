@@ -138,7 +138,7 @@ As an aside, the service will automatically be deregistered once it stops runnin
 
 ### Rationale and Workflow  
 
-The rationale behind registering and discovering services from Zookeeper is to make it easy to create new services and to make it easy to find the ones that we need. This becomes easier if there is a shared library that contains the code that we saw above. For the sake of simplicity, we'll assume all our services are written in Python and there is a single library that we need. If the library also contains an enum which contains the names of all the services that are registered with Zookeeper, it becomes easier to find a service that we need. For example, imagine we need to make a call to the email service. We could have code that looks like the following.  
+The rationale behind registering and discovering services from Zookeeper is to make it easy to create new services and to find the ones that we need. It's even more convenient when there is a shared library which contains the code that we saw above. For the sake of simplicity, we'll assume all our services are written in Python and there is a single library that we need. The library could also contain an enum that represents all the services that are registered with Zookeeper. For example, to make a call to an email microservice, we could have code that looks like the following.  
 
 {% code lang:python %}
 email_service = Service.EMAIL_SERVICE.value
