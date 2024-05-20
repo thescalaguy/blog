@@ -136,7 +136,7 @@ def make_request() -> dict:
 
 As an aside, the service will automatically be deregistered once it stops running. This is because we created an ephemeral node in Zookeeper and it only persists as long as the session that created it is alive. When the service stops, the session is disconnected, and the node is removed from Zookeeper.
 
-### Rationale and Workflow  
+### Rationale  
 
 The rationale behind registering and discovering services from Zookeeper is to make it easy to create new services and to find the ones that we need. It's even more convenient when there is a shared library which contains the code that we saw above. For the sake of simplicity, we'll assume all our services are written in Python and there is a single library that we need. The library could also contain an enum that represents all the services that are registered with Zookeeper. For example, to make a call to an email microservice, we could have code that looks like the following.  
 
