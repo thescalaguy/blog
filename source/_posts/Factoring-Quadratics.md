@@ -45,4 +45,4 @@ Notice how we swap the values of $u$ and $v$ in the columns above. This is becau
 
 We can now write our factors as $(49 x - 22)(x - 6)$. This gives us $x = 6$ or $x = \frac {22} {49}$.   
 
-That's it. That's how we can factor quadratics by creating combinations of their factors.
+That's it. That's how we can factor quadratics by creating combinations of the factors of their coefficients.
