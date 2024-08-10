@@ -3,7 +3,7 @@ title: Guiding Principles
 date: 2024-08-10 17:46:24
 ---
 
-There are a few principles that guide how I create software and these are mentioned below.  
+I recently read the [guiding principles of Daniel Stenberg](https://daniel.haxx.se/blog/2024/05/27/my-bdfl-guiding-principles/), curl's BDFL. Although the principles are written for an open-source project with a diverse set of contributors, I believe that every software team, and by extension every software engineer, should have their own guiding principles. On this page I'd like to jot down what my principles are and how I apply them, both as a member of a team, and as an individual. Some of these are my own, while others have been adapted from Daniel Stenberg's post. 
 
 # Do good, be good
 Software engineering, unlike what most people think, is a collaborative process. Additionally, software is created with the intention of making the world a better place. This means that one interacts with people either directly, by collaborating closely to design, test, and release the software, or indirectly, as users begin to use it. With this in mind, each of us shall strive to bring our best self forward to do good, and to be good unto others.
