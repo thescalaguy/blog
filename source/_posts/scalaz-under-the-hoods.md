@@ -1,5 +1,5 @@
 ---
-title: Scalaz Under the Hoods
+title: Scalaz Under the Hood
 date: 2017-06-24 15:52:04
 tags: 
   - scalaz
