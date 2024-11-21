@@ -198,7 +198,7 @@ class DatabaseAdapter(Protocol):
 Next we'll create two concrete classes which implement this protocol. The first class creates an adapter for MySQL and another for SQLite. Both of these classes take an instance of their specific database and use it to persist the todo list. Since each database instance may have its own set of methods to save data, an adapter provides a familiar interface that can be used elsewhere in the code.
 
 {% code lang:python %}
-class MySQLAdapter(DatabaseAdapter):
+class MySQLAdapter():
 
     def __init__(self, db):
         self.db = db
@@ -206,7 +206,7 @@ class MySQLAdapter(DatabaseAdapter):
     def save_list(self, todolist: "TodoList"): ...
 
 
-class SQLiteAdapter(DatabaseAdapter):
+class SQLiteAdapter():
 
     def __init__(self, db):
         self.db = db
@@ -227,7 +227,7 @@ class RenderingStrategy(Protocol):
 We'll add a concrete strategy called `TableRenderingStrategy` which displays the tasks and subtasks in tabular format. 
 
 {% code lang:python %}
-class TableRenderingStrategy(RenderingStrategy):
+class TableRenderingStrategy():
 
     def render(self, todolist: "TodoList") -> str:
         headers = ["Title", "Status"]
@@ -250,19 +250,15 @@ To create the proxy pattern, we'll create the protocol, `TodoListProtocol`, for 
 
 {% code lang:python %}
 class TodoListProtocol(Protocol):
-    @abc.abstractmethod
+    
     def complete(self, *args, **kwargs): ...
-
-    @abc.abstractmethod
+    
     def search(self, *args, **kwargs) -> list[Task]: ...
-
-    @abc.abstractmethod
+    
     def add(self, *args, **kwargs): ...
-
-    @abc.abstractmethod
+    
     def save(self, *args, **kwargs): ...
-
-    @abc.abstractmethod
+    
     def render(self, *args, **kwargs) -> str: ...
 {% endcode %}  
 
@@ -270,7 +266,7 @@ Next we'll add the implementation for the `TodoList` which implemenets this prot
 
 {% code lang:python %}
 @dc.dataclass(kw_only=True)
-class TodoList(TodoListProtocol, Observable):
+class TodoList(Observable):
     id: uuid.UUID = dc.field(default_factory=uuid.uuid4)
     title: str
     tasks: list[Task] = dc.field(default_factory=list)
@@ -299,13 +295,13 @@ class TodoList(TodoListProtocol, Observable):
         return copy.copy(self.tasks)
 {% endcode %}
 
-Notice how it implements both `TodoListProtocol` and `Observable`. In the `add` method, we call `notify` which updates all the observers for this list.  
+Notice how it implements both `TodoListProtocol` and `Observable`. The `TodoListProtocol` is implemented by providing an implementation for all its methods even when there is no explicit declaration that the protocol has been implemented. In the `add` method, we call `notify` which updates all the observers for this list.  
 
 Finally, we'll add the proxy for `TodoList`. The proxy authenticates each call to the underlying `TodoList` by checking whether the user trying to access the list is the owner or a collaborator. 
 
 {% code lang:python %}
 @dc.dataclass(kw_only=True)
-class TodoListProxy(TodoListProtocol):
+class TodoListProxy():
     todolist: TodoList
 
     def complete(self, user: User, *args, **kwargs):
