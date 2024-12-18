@@ -1,0 +1,163 @@
+---
+title: Creating a data warehouse with Apache Pinot and Debezium
+tags:
+  - architecture
+date: 2024-12-18 07:43:04
+---
+
+
+I'd previously written about [creating a data warehouse using Debezium and Pinot](/2024/06/20/Creating-a-realtime-data-platform-with-Pinot-Airflow-Trino-and-Debezium/). In the design of that system, I'd used a combination of Airflow and HDFS to overcome the limited SQL capabilities of Pinot. However, the newer version of Pinot has better SQL capabilities and, therefore, the design of the system can be simplified. In this post we'll look at how to create a streaming data warehouse using just Pinot and Debezium.  
+
+## Before We Begin  
+
+My setup is simple. It contains Docker containers for Pinot, Debezium, and Postgres. In a nutshell, we'll stream data from Postgres into Pinot using Debezium. The newer version of Debezium makes it easy to run snapshots of tables using signals. This is handy when we need to run backfills. However, we'll design a system where the need for backfills is reduced. Throughout the remainder of this blog post, we'll look at how to ingest a table of orders placed by customers into Pinot.  
+
+## Getting Started  
+
+We'll begin by bringing up the Docker containers. I have a small script which creates a bunch of tables in the database and populates them with data. While there are many tables, the one we are interested is "orders". Let's run the script.  
+
+{% code lang:python %}
+python faker/data.py
+{% endcode %}
+
+A row from the table looks as follows.
+
+{% code %}
+| id | user_id | address_id | cafe_id | partner_id | created_at                 | updated_at | deleted_at | status | user_agent                                                                                                                                                       |
+|----|---------|------------|---------|------------|----------------------------|------------|------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  1 |       2 |          2 |      34 |            | 2024-12-17 19:03:23.018782 |            |            |      0 | Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 EdgiOS/121.2277.107 Mobile/15E148 Safari/605.1.15 |
+{% endcode %}  
+
+Each row of the table contains foreign keys to other tables along with the user agent of the device used to place the order.  
+
+Next, we'll stream this data into Kafka using Debezium. The configuration of the connector is as follows.  
+
+{% code lang:json %}
+{
+    "name": "order",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "database.hostname": "db",
+        "database.user": "postgres",
+        "database.password": "my-secret-pw",
+        "database.dbname": "postgres",
+        "database.server.name": "postgres",
+        "plugin.name": "pgoutput",
+        "publication.autocreate.mode": "filtered",
+        "time.precision.mode": "connect",
+        "tombstones.on.delete": "false",
+        "snapshot.mode": "no_data",
+        "heartbeat.interval.ms": "1000",
+        "transforms": "route",
+        "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+        "transforms.route.regex": "([^.]+)\\.([^.]+)\\.([^.]+)",
+        "transforms.route.replacement": "$3",
+        "event.processing.failure.handling.mode": "skip",
+        "producer.override.compression.type": "snappy",
+        "signal.data.collection": "debezium.signal",
+        "topic.prefix": "microservice"
+    }
+}
+{% endcode %}  
+
+There are a few properties to note here. First, `snapshot.mode` property is set to `no_data` which means thet Debezium will not run snapshots on the tables it captures and will only stream the upcoming inserts, updates, and deletes. Second, we've set `signal.data.collection` to `debezium.signal` which means that the table used to pass signals to Debezium is called `signal` and is located in the `debezium` schema. Finally, there is no explicit include or exclude list. This means Debezium will stream all tables from all schemas.  
+
+Before we send this configuration to Debezium, we'll create the signalling table.  
+
+{% code lang:sql %}
+CREATE SCHEMA debezium;
+
+CREATE TABLE debezium.signal (
+    id TEXT,
+    type TEXT,
+    data TEXT
+);
+{% endcode %}  
+
+We'll send this configuration to Debezium to spawn a connector which will stream these changes.  
+
+{% code lang:shell %}
+curl -H "Content-Type: application/json" -XPOST -d @tables/001-order/debezium.json localhost:8083/connectors | jq .
+{% endcode %}  
+
+Now that we can stream this data into Kafka, we'll configure Pinot to ingest this data. We'll begin by creating a schema which defines a table which stores the primary key of the table and the entire JSON payload generated by Debezium. The schema looks as follows.  
+
+{% code lang:json %}
+{
+  "schemaName": "orders",
+  "dimensionFieldSpecs": [
+    {
+      "name": "id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "source",
+      "dataType": "JSON"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "created_at",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }
+  ],
+  "primaryKeyColumns": [
+    "id"
+  ],
+  "metricFieldSpecs": []
+}
+{% endcode %}  
+
+Next, we'll create a table which stores the data from Kafka. For brevity, only the ingestion config is shown below along with field-level transformations. 
+
+{% code lang:json %}
+{
+    "ingestionConfig": {
+        "transformConfigs": [
+            {
+                "columnName": "id",
+                "transformFunction": "jsonPath(payload, '$.after.id')"
+            },
+            {
+                "columnName": "source",
+                "transformFunction": "jsonPath(payload, '$.after')"
+            },
+            {
+                "columnName": "created_at",
+                "transformFunction": "jsonPath(payload, '$.after.created_at')"
+            }
+        ]
+    }
+}
+{% endcode %}  
+
+In the table above, we store the entire JSON payload generated by Kafka. As we'll see, we can extract columns from this payload to create a tabular view of the data.  
+
+We'll send these configurations to Pinot to create the schema and the table using the following curl commands.  
+
+{% code %}
+curl -F schemaName=@tables/001-order/order_schema.json localhost:9000/schemas | jq .
+curl -XPOST -H 'Content-Type: application/json' -d @tables/001-order/order_table.json localhost:9000/tables | jq .
+{% endcode %}
+
+Finally, to get Debezium to to run a snapshot, we'll enqueue a signal in the signalling table by executing the following SQL.  
+
+{% code lang:sql %}
+INSERT INTO debezium.signal 
+VALUES (
+    gen_random_uuid()::TEXT,
+    'execute-snapshot',
+    '{"data-collections": [".*\\.orders"], "type": "incremental"}'
+);
+{% endcode %}  
+
+In the query above, we've specified a regular expression which will make Debezium stream `orders` table from all schemas. This allows us to create a single Kafka stream containing data from all the tables. Once Debezium receives this signal, it will begin taking an incremental snapshot of the tables and streaming rows to Kafka.
+
+
+We can now view this data by querying Pinot. 
+
+{% asset_img query.png %}  
+
+That's it. That's how we can stream data from a database into Pinot using Debezium. In the coming post we will see how to create tabular views of this data by extracting columns.
