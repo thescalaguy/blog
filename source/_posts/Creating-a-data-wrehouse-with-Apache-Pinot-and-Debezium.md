@@ -1,5 +1,5 @@
 ---
-title: Creating a realtime data platform with Pinot, Trino, Airflow, and Debezium - the design
+title: Creating a realtime data platform - the design
 tags:
   - architecture
 date: 2024-12-18 07:43:04
