@@ -95,6 +95,7 @@ Let's start by creating the schema.
 {% code lang:json %}
 {
   "schemaName": "orders",
+  "enableColumnBasedNullHandling": true,
   "dimensionFieldSpecs": [
     {
       "name": "id",
@@ -120,7 +121,7 @@ Let's start by creating the schema.
 }
 {% endcode %}  
 
-The schema defines a few things. It defines the name of the schema. This will also become the name of the table. Next, it defines the fields that will be present in the table. We've defined `id`, `source`, and `created_at`. The first two are specified in `dimensionFieldSpecs` and specify a column which becomes a dimension for any metric. The `created_at` field is specified in `dateTimeFieldSpecs` since it specifies a time column; Debezium will send timestamp columns as milliseconds since epoch. We've also specified `id` as the primary key.
+The schema defines a few things. It defines the name of the schema. This will also become the name of the table. Next, it defines the fields that will be present in the table. We've defined `id`, `source`, and `created_at`. The first two are specified in `dimensionFieldSpecs` and specify a column which becomes a dimension for any metric. The `created_at` field is specified in `dateTimeFieldSpecs` since it specifies a time column; Debezium will send timestamp columns as milliseconds since epoch. We've specified `id` as the primary key. Finally, `enableColumnBasedNullHandling` allows columns to have null values in them.
 
 Once the schema is defined, we can create the table configuration.  
 
