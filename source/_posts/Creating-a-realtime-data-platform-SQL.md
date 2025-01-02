@@ -2,7 +2,9 @@
 title: Creating a realtime data platform - SQL
 tags:
   - architecture
+date: 2025-01-02 12:36:42
 ---
+
 In the [previous post](/2024/12/27/Creating-a-realtime-data-platform-nullability/) we looked at nullability and how Pinot requires that a default value be specified in place of an actual null. In this post we'll begin looking at how to query data stored in Pinot. We'll begin by querying Pinot using its API and query console. Then, we'll query Pinot using Trino. We'll use Trino's query federation capability to create views and tables on top of the data that's stored in Pinot.
 
 ## Getting started
