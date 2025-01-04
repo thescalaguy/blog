@@ -183,7 +183,7 @@ WITH (
 );
 {% endcode %}
 
-Once the schema is created, we can persist results of the query for quicker access. Let's store the result of the previous query as a view. The following query shows how to do it.  
+Once the schema is created, we can persist the query or its results for quicker access. In the query that follows, we create a view on top of Pinot.
 
 {% code lang:sql %}
 CREATE VIEW hive.views.daily_orders AS
