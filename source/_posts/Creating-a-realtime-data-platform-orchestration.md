@@ -132,7 +132,7 @@ drop_table = SQLExecuteQueryOperator(
 create_table = SQLExecuteQueryOperator(
     task_id="create_top_users",
     conn_id="trino",
-    sql="sql/datasets/top_users.ysql",
+    sql="sql/datasets/top_users.sql",
     dag=dag,
 )
 
