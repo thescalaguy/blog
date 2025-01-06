@@ -102,7 +102,9 @@ airflow/dags
 
 Let's begin with the `drop_table.sql` query. This is a templated query which allows dropping a table. Writing queries as templates allows us to leverage the Jinja2 templating engine that comes with Airflow. We can create queries depending on the parameters passed to the operator. This allows reusing the same template across multiple tasks. The variables are enclosed in two pairs of braces and the name of the variable is written between them. The content of the file is shown below.  
 
-{% asset_img query_1.png %}  
+{% code %}
+{% raw %} DROP TABLE IF EXISTS {{ params.name }} {% endraw %}
+{% endcode %}
 
 As we'll see shortly, we'll pass parameters to the Airflow task executing this query which are available in the `params` dictionary in the template. In the query above, we'd have to pass the `name` variable which contains the name of the table we'd like to drop. The `top_users.sql` file contains the same query we've seen above so we'll move on to setting up the DAG.  
 
