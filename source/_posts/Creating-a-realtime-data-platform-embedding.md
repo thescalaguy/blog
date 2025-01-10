@@ -2,7 +2,9 @@
 title: Creating a realtime data platform - embedding
 tags:
   - architecture
+date: 2025-01-10 17:51:10
 ---
+
 In the [previous post](/2025/01/06/Creating-a-realtime-data-platform-visualization/) we looked at how to visualize our data using Superset. In this post we'll look at embedding our dashboards. Embedding allows us to display a dashboard outside of Superset and within a webpage. This lets us blend analytics seamlessly into the user's workflow. We'll tweak a few Superset settings to allow us to embed a dashboard, and then build a Flask application which will render it in a webpage. We'll also look at row-level security which lets us limit a user's access to only those rows that they are allowed access to.  
 
 ## Getting started  
