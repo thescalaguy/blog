@@ -35,7 +35,7 @@ GROUP BY 1, 2
 ORDER BY 1 ASC, 3 DESC;
 {% endcode %}
 
-Once the views are created, we can use them in Superset to create our dashboard. However, we first need to change some settings in Superset to allow embedding dashboards. If you have your Superset containers running from the previous post, start by bringing them down. Then, execute the following command to delete all the Docker images related to Superset; we'll rebuild it with the new settings. 
+Once the views have been constructed, we can use them in Superset to build our dashboard. To enable dashboard embedding, we must first update some Superset settings. If you have any Superset containers running from the last post, start by shutting them down. Then, run the following command to remove any Docker images linked to Superset; we'll rebuild it with the new settings.
 
 {% code lang:shell %}
 docker images | grep superset | awk '{print $3}' | xargs docker rmi
