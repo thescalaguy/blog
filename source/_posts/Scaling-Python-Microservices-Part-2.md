@@ -1,5 +1,5 @@
 ---
-title: Scaling Python Microservices Part 2
+title: Scaling Python Microservices - sharding
 tags:
   - architecture
 date: 2024-05-12 17:21:14

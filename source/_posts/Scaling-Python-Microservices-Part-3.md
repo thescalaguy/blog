@@ -1,5 +1,5 @@
 ---
-title: Scaling Python Microservices Part 3
+title: Scaling Python Microservices - service discovery
 tags:
   - architecture
 date: 2024-05-19 17:35:46
