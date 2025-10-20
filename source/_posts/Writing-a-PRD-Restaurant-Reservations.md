@@ -1,7 +1,7 @@
 ---
 title: Writing a PRD - Curated Menus at Restaurants
 tags:
-  - misc
+  - PRD
 date: 2025-10-17 19:17:27
 ---
 
