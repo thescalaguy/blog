@@ -100,4 +100,4 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/thescalaguy/thescalaguy.github.io.git
+  repo: git@github.com:thescalaguy/thescalaguy.github.io.git
