@@ -35,7 +35,7 @@ The following are the list of SMART goals which will enable the release of the f
 3. Create three curated menus for each of these restaurants.
 4. Get 100 bookings for each menu in the first six months.  
 
-The KPIs for the following goals are listed below.  
+The KPIs for the goals are listed below.  
 
 1. The number of people viewing curated menus.  
 2. The number of people buying curated menus.
