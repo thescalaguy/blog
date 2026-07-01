@@ -5,12 +5,12 @@ tags:
 date: 2026-06-30 12:05:12
 ---
 
+Lately I've been working on an AI side project that's an assistant for sales executives. The aim of the project is to automate as much of the sales process as possible by adding AI into the mix. The catalyst behind this project is the observation that there are industries where sales happen over email. Sales executives can connect their inbox to the system, allowing it to handle much of the sales journey automatically while they focus on the more human aspect of the process like relationship building. I nicknamed the project as "Salesy" and this series of posts will walk you through how it is built and what it does. This introductory post outlines some of the features of the project.
 
-Lately I've been working on an AI side project that's an assistant for sales executives. The aim of the project is to automate as much of the sales process as possible by adding AI into the mix. The catalyst behind this project is the observation that there are industries where sales happen over email. Therefore, a system which automates the sales journey by reading the inbox of the sales executive allows improving efficiency by handling much of the repetitive work like asking and answering common questions, guiding the prospect through the sales journey, and so on. I nicknamed the project as "Salesy" and this series of posts will walk you through how it is built and what it does. This introductory post outlines some of the features of the project and will be written in a PRD style.  
 
 ## Defining the Product  
 
-Salesy is a human-in-the-loop AI sales assistant that analyses every incoming email and intelligently guides the prospect through the sales journey. There is a singular persona that it is designed for — the sales executive. Sales executives can connect their inbox to the system, allowing it to handle much of the sales journey automatically while they focus on the more human aspect of the process like relationship building.   
+Salesy is a human-in-the-loop AI sales assistant that analyses every incoming email and intelligently guides the prospect through the sales journey. It is a system which automates the sales journey by reading the inbox of the sales executive and allows improving efficiency by handling much of the repetitive work like asking and answering common questions, guiding the prospect through the sales journey, and so on. There is a singular persona that it is designed for — the sales executive.    
 
 ## Defining the Goals  
 
@@ -72,6 +72,6 @@ The "Settings" tab allows changing the settings in the system. For example, sinc
 
 ## Conclusion  
 
-This was a brief overview of what Salesy can do. Later posts will look at the system in more detail.  
+This was a brief overview of what Salesy can do. Starting with the next post, we will look at each of the features outlined above in more detail. Then, subsequent posts will look at the engineering behind the project. 
 
 Finito.
